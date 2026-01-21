@@ -329,11 +329,11 @@ export default function InstagramScannerPage() {
             const totalConversations = Math.min(baseConversations + additionalConversations, 12);
             setConversationsToShow(totalConversations);
 
-            // 6. Calculate likes to show based on 10-minute intervals
-            // Starts with 3 likes, adds 1 every 10 minutes, max 20
+            // 6. Calculate likes to show based on 5-minute intervals
+            // Starts with 10 likes, adds 1 every 5 minutes, max 20
             const minutesSinceStart = (now - parseInt(firstAccess)) / (1000 * 60);
-            const baseLikes = 3;
-            const additionalLikes = Math.floor(minutesSinceStart / 10);
+            const baseLikes = 10;
+            const additionalLikes = Math.floor(minutesSinceStart / 5);
             const totalLikes = Math.min(baseLikes + additionalLikes, 20);
             setLikesToShow(totalLikes);
         }, 1000);
@@ -346,10 +346,10 @@ export default function InstagramScannerPage() {
         const totalConversations = Math.min(baseConversations + additionalConversations, 12);
         setConversationsToShow(totalConversations);
 
-        // Initial likes calculation
+        // Initial likes calculation - starts with 10, +1 every 5 minutes
         const minutesSinceStart = (now - parseInt(firstAccess)) / (1000 * 60);
-        const baseLikes = 3;
-        const additionalLikes = Math.floor(minutesSinceStart / 10);
+        const baseLikes = 10;
+        const additionalLikes = Math.floor(minutesSinceStart / 5);
         const totalLikes = Math.min(baseLikes + additionalLikes, 20);
         setLikesToShow(totalLikes);
 
@@ -488,18 +488,27 @@ export default function InstagramScannerPage() {
             }
 
             // 1. Generate 12 message conversations + 20 likes = 32 total results
-            // Ensure unique images for each result - we have 35+ images available
-            const allProfiles = [...profilesToUse, ...profilesToUse].slice(0, 32)
-            const randomUsernames = shuffleAndPick(allProfiles, 32)
-            // Shuffle all available images and pick 32 unique ones
-            const shuffledImages = shuffleAndPick(imagesToUse, Math.min(imagesToUse.length, 32))
+            // Ensure UNIQUE images for each result - no duplicates allowed
 
-            const results = randomUsernames.map((username, index) => {
+            // Create enough unique usernames (duplicate array if needed)
+            const extendedProfiles = [...profilesToUse, ...profilesToUse, ...profilesToUse].slice(0, 32)
+            const shuffledUsernames = shuffleAndPick(extendedProfiles, 32)
+
+            // Create a pool of unique images - each image used only once
+            // If we have 35+ images, we can give each of the 32 results a unique image
+            const allImages = [...imagesToUse] // Make a copy
+            const shuffledAllImages: string[] = []
+            while (allImages.length > 0) {
+                const randomIndex = Math.floor(Math.random() * allImages.length)
+                shuffledAllImages.push(allImages.splice(randomIndex, 1)[0])
+            }
+
+            const results = shuffledUsernames.map((username, index) => {
                 const isMessage = index < 12 // First 12 are messages
                 return {
                     username,
-                    // Use unique image for each result (no duplicates within first 32)
-                    image: shuffledImages[index % shuffledImages.length],
+                    // Each result gets a unique image - direct index access, no modulo
+                    image: shuffledAllImages[index] || shuffledAllImages[index % shuffledAllImages.length],
                     type: (isMessage ? "message" : "like") as "like" | "message",
                     // Each message gets a unique chat from the 12 available chats
                     chatHistory: isMessage ? chatSource[index % chatSource.length] : undefined
