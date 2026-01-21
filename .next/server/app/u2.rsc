@@ -1,0 +1,20 @@
+1:"$Sreact.fragment"
+2:I[1067,["177","static/chunks/app/layout-b58043116014efbb.js"],"GoogleTagManager"]
+3:I[9350,["177","static/chunks/app/layout-b58043116014efbb.js"],""]
+4:I[9026,["177","static/chunks/app/layout-b58043116014efbb.js"],"Providers"]
+5:I[4002,[],""]
+6:I[6688,[],""]
+7:I[6851,[],"ClientPageRoot"]
+8:I[1129,["588","static/chunks/588-8fc00bfc0759bf30.js","36","static/chunks/app/u2/page-b8477e6d771cda75.js"],"default"]
+b:I[1082,[],"OutletBoundary"]
+e:I[1082,[],"ViewportBoundary"]
+10:I[1082,[],"MetadataBoundary"]
+12:I[9861,[],""]
+:HL["/_next/static/css/bc27d11ac8f917b1.css","style"]
+0:{"P":null,"b":"IjtFyr_Jr7SgyD9J53xC7","p":"","c":["","u2"],"i":false,"f":[[["",{"children":["u2",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/bc27d11ac8f917b1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","$L2",null,{"gtmId":"GTM-PK6HB293"}],["$","$L3",null,{"type":"text/javascript","src":"https://app.monetizze.com.br/upsell_incorporado.php","strategy":"beforeInteractive"}]]}],["$","body",null,{"children":["$","$L4",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":["u2",["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L7",null,{"Component":"$8","searchParams":{},"params":{},"promises":["$@9","$@a"]}],"$undefined",null,["$","$Lb",null,{"children":["$Lc","$Ld",null]}]]}],{},null,false]},[["$","div","l",{"className":"min-h-screen bg-gray-100 flex items-center justify-center p-4","children":["$","div",null,{"className":"text-center","children":[["$","div",null,{"className":"w-16 h-16 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"}],["$","p",null,{"className":"text-gray-600 font-semibold","children":"Loading page..."}]]}]}],[],[]],false]},null,false],["$","$1","h",{"children":[null,["$","$1","f52OMn_nt7owmw6qNOYiC",{"children":[["$","$Le",null,{"children":"$Lf"}],null]}],["$","$L10",null,{"children":"$L11"}]]}],false]],"m":"$undefined","G":["$12","$undefined"],"s":false,"S":true}
+9:{}
+a:{}
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+c:null
+d:null
+11:[["$","meta","0",{"name":"generator","content":"v0.app"}]]
