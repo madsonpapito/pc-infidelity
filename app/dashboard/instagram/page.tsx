@@ -27,7 +27,7 @@ import {
 // DADOS MOCKADOS
 // ==========================================================
 const FEMALE_PROFILES = ["@jessy_nutty", "@alexis_30", "@izes", "@maryjane434", "@emma.whistle32", "@celina_anderson467", "@letty.miriah99", "@sophia_rose45", "@katie.bell87", "@lily_grace23", "@mia.evans56", "@olivia_star78", "@ava_johnson91", "@isabella.moon12", "@harper_lee34", "@evelyn.brooks67", "@abigail_smith89", "@ella.frost45"]
-const FEMALE_IMAGES = ["/images/male/perfil/1.jpg", "/images/male/perfil/2.jpg", "/images/male/perfil/3.jpg", "/images/male/perfil/4.jpg", "/images/male/perfil/5.jpg", "/images/male/perfil/6.jpg", "/images/male/perfil/7.jpg", "/images/male/perfil/8.jpg", "/images/male/perfil/9.jpg", "/images/male/perfil/10.jpg", "/images/male/perfil/11.jpg", "/images/male/perfil/12.jpg", "/images/male/perfil/13.jpg", "/images/male/perfil/14.jpg", "/images/male/perfil/15.jpg", "/images/male/perfil/16.jpg", "/images/male/perfil/17.jpg", "/images/male/perfil/18.jpg", "/images/male/perfil/19.jpg", "/images/male/perfil/20.jpg"]
+const FEMALE_IMAGES = ["/images/male/perfil/1.jpg", "/images/male/perfil/2.jpg", "/images/male/perfil/3.jpg", "/images/male/perfil/4.jpg", "/images/male/perfil/5.jpg", "/images/male/perfil/6.jpg", "/images/male/perfil/7.jpg", "/images/male/perfil/8.jpg", "/images/male/perfil/9.jpg", "/images/male/perfil/10.jpg", "/images/male/perfil/11.jpg", "/images/male/perfil/12.jpg", "/images/male/perfil/13.jpg", "/images/male/perfil/14.jpg", "/images/male/perfil/15.jpg", "/images/male/perfil/16.jpg", "/images/male/perfil/17.jpg", "/images/male/perfil/18.jpg", "/images/male/perfil/19.jpg", "/images/male/perfil/20.jpg", "/images/male/perfil/21.jpg", "/images/male/perfil/22.jpg", "/images/male/perfil/23.jpg", "/images/male/perfil/24.jpg", "/images/male/perfil/25.jpg", "/images/male/perfil/26.jpg", "/images/male/perfil/27.jpg", "/images/male/perfil/28.jpg", "/images/male/perfil/29.jpg", "/images/male/perfil/30.jpg", "/images/male/perfil/31.jpg", "/images/male/perfil/32.jpg", "/images/male/perfil/33.jpg", "/images/male/perfil/34.jpg", "/images/male/perfil/35.jpg", "/images/male/perfil/36.jpg", "/images/male/perfil/37.jpg"]
 const MALE_PROFILES = ["@john.doe92", "@mike_anderson", "@chris_williams", "@danny.smith", "@liam.baker", "@noah_carter", "@ryan_hills", "@ethan_jones55", "@oliver.miller78", "@jacob_thomas23", "@logan_green45", "@mason.evans67", "@elijah_wood89", "@james.parker12", "@benjamin_hall34", "@lucas_gray56", "@aiden.clark78", "@wyatt_brooks90"]
 const MALE_IMAGES = ["/images/female/perfil/1.jpg", "/images/female/perfil/2.jpg", "/images/female/perfil/3.jpg", "/images/female/perfil/4.jpg", "/images/female/perfil/5.jpg", "/images/female/perfil/6.jpg", "/images/female/perfil/7.jpg", "/images/female/perfil/8.jpg", "/images/female/perfil/9.jpg", "/images/female/perfil/10.jpg", "/images/female/perfil/11.jpg", "/images/female/perfil/12.jpg", "/images/female/perfil/13.jpg", "/images/female/perfil/14.jpg", "/images/female/perfil/15.jpg", "/images/female/perfil/16.jpg", "/images/female/perfil/17.jpg", "/images/female/perfil/18.jpg", "/images/female/perfil/19.jpg", "/images/female/perfil/20.jpg", "/images/female/perfil/21.jpg", "/images/female/perfil/22.jpg", "/images/female/perfil/23.jpg", "/images/female/perfil/24.jpg", "/images/female/perfil/25.jpg", "/images/female/perfil/26.jpg", "/images/female/perfil/27.jpg", "/images/female/perfil/28.jpg", "/images/female/perfil/29.jpg", "/images/female/perfil/30.jpg", "/images/female/perfil/31.jpg", "/images/female/perfil/32.jpg", "/images/female/perfil/33.jpg", "/images/female/perfil/34.jpg", "/images/female/perfil/35.jpg"]
 
@@ -488,16 +488,18 @@ export default function InstagramScannerPage() {
             }
 
             // 1. Generate 12 message conversations + 20 likes = 32 total results
-            // We need more profiles for likes, so we'll reuse and shuffle
+            // Ensure unique images for each result - we have 35+ images available
             const allProfiles = [...profilesToUse, ...profilesToUse].slice(0, 32)
             const randomUsernames = shuffleAndPick(allProfiles, 32)
-            const randomImages = shuffleAndPick([...imagesToUse, ...imagesToUse, ...imagesToUse], 32)
+            // Shuffle all available images and pick 32 unique ones
+            const shuffledImages = shuffleAndPick(imagesToUse, Math.min(imagesToUse.length, 32))
 
             const results = randomUsernames.map((username, index) => {
                 const isMessage = index < 12 // First 12 are messages
                 return {
                     username,
-                    image: randomImages[index % randomImages.length],
+                    // Use unique image for each result (no duplicates within first 32)
+                    image: shuffledImages[index % shuffledImages.length],
                     type: (isMessage ? "message" : "like") as "like" | "message",
                     // Each message gets a unique chat from the 12 available chats
                     chatHistory: isMessage ? chatSource[index % chatSource.length] : undefined
