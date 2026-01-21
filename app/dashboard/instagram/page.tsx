@@ -27,7 +27,7 @@ import {
 // DADOS MOCKADOS
 // ==========================================================
 const FEMALE_PROFILES = ["@jessy_nutty", "@alexis_30", "@izes", "@maryjane434", "@emma.whistle32", "@celina_anderson467", "@letty.miriah99", "@sophia_rose45", "@katie.bell87", "@lily_grace23", "@mia.evans56", "@olivia_star78", "@ava_johnson91", "@isabella.moon12", "@harper_lee34", "@evelyn.brooks67", "@abigail_smith89", "@ella.frost45"]
-const FEMALE_IMAGES = ["/images/male/perfil/1.jpg", "/images/male/perfil/2.jpg", "/images/male/perfil/3.jpg", "/images/male/perfil/4.jpg", "/images/male/perfil/5.jpg", "/images/male/perfil/6.jpg", "/images/male/perfil/7.jpg", "/images/male/perfil/8.jpg", "/images/male/perfil/9.jpg"]
+const FEMALE_IMAGES = ["/images/male/perfil/1.jpg", "/images/male/perfil/2.jpg", "/images/male/perfil/3.jpg", "/images/male/perfil/4.jpg", "/images/male/perfil/5.jpg", "/images/male/perfil/6.jpg", "/images/male/perfil/7.jpg", "/images/male/perfil/8.jpg", "/images/male/perfil/9.jpg", "/images/male/perfil/10.jpg", "/images/male/perfil/11.jpg", "/images/male/perfil/12.jpg", "/images/male/perfil/13.jpg", "/images/male/perfil/14.jpg", "/images/male/perfil/15.jpg", "/images/male/perfil/16.jpg", "/images/male/perfil/17.jpg", "/images/male/perfil/18.jpg", "/images/male/perfil/19.jpg", "/images/male/perfil/20.jpg"]
 const MALE_PROFILES = ["@john.doe92", "@mike_anderson", "@chris_williams", "@danny.smith", "@liam.baker", "@noah_carter", "@ryan_hills", "@ethan_jones55", "@oliver.miller78", "@jacob_thomas23", "@logan_green45", "@mason.evans67", "@elijah_wood89", "@james.parker12", "@benjamin_hall34", "@lucas_gray56", "@aiden.clark78", "@wyatt_brooks90"]
 const MALE_IMAGES = ["/images/female/perfil/1.jpg", "/images/female/perfil/2.jpg", "/images/female/perfil/3.jpg", "/images/female/perfil/4.jpg", "/images/female/perfil/5.jpg", "/images/female/perfil/6.jpg", "/images/female/perfil/7.jpg", "/images/female/perfil/8.jpeg", "/images/female/perfil/9.jpg"]
 
@@ -283,6 +283,9 @@ export default function InstagramScannerPage() {
     // Estado para controle de conversas visíveis baseado no tempo (6h reveal system)
     const [conversationsToShow, setConversationsToShow] = useState(3)
 
+    // Estado para controle de likes visíveis baseado no tempo (10min reveal system)
+    const [likesToShow, setLikesToShow] = useState(3)
+
     const debounceTimer = useRef<NodeJS.Timeout | null>(null)
 
     // --- LÓGICA DO CRONÔMETRO E REVEAL SYSTEM (User Specific) ---
@@ -323,8 +326,16 @@ export default function InstagramScannerPage() {
             const hoursSinceStart = (now - parseInt(firstAccess)) / (1000 * 60 * 60);
             const baseConversations = 3;
             const additionalConversations = Math.floor(hoursSinceStart / 6);
-            const totalToShow = Math.min(baseConversations + additionalConversations, 12);
-            setConversationsToShow(totalToShow);
+            const totalConversations = Math.min(baseConversations + additionalConversations, 12);
+            setConversationsToShow(totalConversations);
+
+            // 6. Calculate likes to show based on 10-minute intervals
+            // Starts with 3 likes, adds 1 every 10 minutes, max 20
+            const minutesSinceStart = (now - parseInt(firstAccess)) / (1000 * 60);
+            const baseLikes = 3;
+            const additionalLikes = Math.floor(minutesSinceStart / 10);
+            const totalLikes = Math.min(baseLikes + additionalLikes, 20);
+            setLikesToShow(totalLikes);
         }, 1000);
 
         // Initial calculation
@@ -332,8 +343,15 @@ export default function InstagramScannerPage() {
         const hoursSinceStart = (now - parseInt(firstAccess)) / (1000 * 60 * 60);
         const baseConversations = 3;
         const additionalConversations = Math.floor(hoursSinceStart / 6);
-        const totalToShow = Math.min(baseConversations + additionalConversations, 12);
-        setConversationsToShow(totalToShow);
+        const totalConversations = Math.min(baseConversations + additionalConversations, 12);
+        setConversationsToShow(totalConversations);
+
+        // Initial likes calculation
+        const minutesSinceStart = (now - parseInt(firstAccess)) / (1000 * 60);
+        const baseLikes = 3;
+        const additionalLikes = Math.floor(minutesSinceStart / 10);
+        const totalLikes = Math.min(baseLikes + additionalLikes, 20);
+        setLikesToShow(totalLikes);
 
         return () => clearInterval(timerInterval);
     }, []);
@@ -469,10 +487,11 @@ export default function InstagramScannerPage() {
                 chatSource = CHATS_FOR_MALE_TARGET
             }
 
-            // 1. Generate 12 message conversations + 6 likes = 18 total results
-            // Shuffle profiles and images for randomization
-            const randomUsernames = shuffleAndPick(profilesToUse, 18)
-            const randomImages = shuffleAndPick(imagesToUse, 18)
+            // 1. Generate 12 message conversations + 20 likes = 32 total results
+            // We need more profiles for likes, so we'll reuse and shuffle
+            const allProfiles = [...profilesToUse, ...profilesToUse].slice(0, 32)
+            const randomUsernames = shuffleAndPick(allProfiles, 32)
+            const randomImages = shuffleAndPick([...imagesToUse, ...imagesToUse, ...imagesToUse], 32)
 
             const results = randomUsernames.map((username, index) => {
                 const isMessage = index < 12 // First 12 are messages
@@ -695,7 +714,8 @@ export default function InstagramScannerPage() {
     const renderStep3 = () => {
         // Use time-based reveal system: shows 3 initially, +1 every 6 hours, max 12
         const messages = randomizedResults.filter(r => r.type === "message").slice(0, conversationsToShow);
-        const likes = randomizedResults.filter(r => r.type === "like").slice(0, 6);
+        // Likes: shows 3 initially, +1 every 10 minutes, max 20
+        const likes = randomizedResults.filter(r => r.type === "like").slice(0, likesToShow);
 
         return (
             <div className="space-y-6 animate-fade-in pb-4">
@@ -769,25 +789,58 @@ export default function InstagramScannerPage() {
                         </div>
                     )}
 
-                    {/* 2. ABA DE LIKES (6 PERFIS) */}
+                    {/* 2. ABA DE LIKES (Time-based reveal with dynamic timestamps) */}
                     {resultTab === "likes" && (
                         <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
                             <h3 className="font-bold text-lg flex items-center gap-2 text-gray-800">
                                 <Heart className="text-pink-500 w-5 h-5" /> Liked by Target
+                                <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
                             </h3>
                             <div className="grid grid-cols-1 gap-3">
-                                {likes.map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
-                                        <img src={item.image} alt="user" className="w-10 h-10 rounded-full object-cover" />
-                                        <div className="flex-1 text-sm">
-                                            <p className="text-gray-800">
-                                                Liked <b>{item.username}'s</b> photo
-                                            </p>
-                                            <p className="text-gray-400 text-xs">Yesterday</p>
+                                {likes.map((item, i) => {
+                                    // Generate dynamic timestamps - newest first, older as you go down
+                                    const getTimeAgo = (index: number) => {
+                                        const times = [
+                                            "Just now",
+                                            "2 min ago",
+                                            "5 min ago",
+                                            "8 min ago",
+                                            "12 min ago",
+                                            "18 min ago",
+                                            "25 min ago",
+                                            "34 min ago",
+                                            "47 min ago",
+                                            "1h ago",
+                                            "1h 15m ago",
+                                            "1h 42m ago",
+                                            "2h ago",
+                                            "2h 30m ago",
+                                            "3h ago",
+                                            "4h ago",
+                                            "5h ago",
+                                            "6h ago",
+                                            "8h ago",
+                                            "Yesterday"
+                                        ];
+                                        return times[index] || "Yesterday";
+                                    };
+
+                                    return (
+                                        <div key={i} className="flex items-center gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                                            <img src={item.image} alt="user" className="w-10 h-10 rounded-full object-cover" />
+                                            <div className="flex-1 text-sm">
+                                                <p className="text-gray-800">
+                                                    Liked <b>{item.username}'s</b> photo
+                                                </p>
+                                                <p className={`text-xs ${i < 3 ? 'text-green-500 font-medium' : 'text-gray-400'}`}>
+                                                    {i < 3 && <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1 animate-pulse"></span>}
+                                                    {getTimeAgo(i)}
+                                                </p>
+                                            </div>
+                                            <Heart className="text-pink-500 fill-pink-500" size={16} />
                                         </div>
-                                        <Heart className="text-pink-500 fill-pink-500" size={16} />
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     )}
