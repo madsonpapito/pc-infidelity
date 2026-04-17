@@ -72,38 +72,38 @@ html {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: #0a0e27;
+    --foreground: #ffffff;
+    --card: #1a1f3a;
+    --card-foreground: #ffffff;
+    --popover: #1a1f3a;
+    --popover-foreground: #ffffff;
+    --primary: #2962FF;
+    --primary-foreground: #ffffff;
+    --secondary: #AA00FF;
+    --secondary-foreground: #ffffff;
+    --muted: #2a3050;
+    --muted-foreground: #a0a9c9;
+    --accent: #00E676;
+    --accent-foreground: #0a0e27;
+    --destructive: #ff5252;
+    --destructive-foreground: #ffffff;
+    --border: #2a3050;
+    --input: #1a1f3a;
+    --ring: #2962FF;
+    --chart-1: #2962FF;
+    --chart-2: #AA00FF;
+    --chart-3: #00E676;
+    --chart-4: #FFB300;
+    --chart-5: #FF6B9D;
+    --sidebar-background: #0a0e27;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #2962FF;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #1a1f3a;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: #2a3050;
+    --sidebar-ring: #2962FF;
   }
 }
 
@@ -113,5 +113,12 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-manrope), sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk), sans-serif;
+  }
+  label {
+    font-family: var(--font-manrope), sans-serif;
   }
 }

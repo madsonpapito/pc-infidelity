@@ -108,14 +108,14 @@ export default function CoursesContent() {
                     onClick={() => handleSelectCourse(course)}
                     className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                       selectedCourse?.id === course.id
-                        ? "border-blue-500 bg-blue-900 dark:bg-blue-900"
-                        : "border-slate-700 hover:border-blue-400 bg-slate-800"
+                        ? "border-[#2962FF] bg-[#1a1f3a]"
+                        : "border-[#2a3050] hover:border-[#2962FF] bg-[#1a1f3a]"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex-1">
-                        <h3 className="font-semibold text-white">{course.title}</h3>
-                        <p className="text-sm text-slate-300 mt-1">
+                        <h3 className="font-semibold text-white" style={{ fontFamily: 'var(--font-space-grotesk)' }}>{course.title}</h3>
+                        <p className="text-sm text-[#a0a9c9] mt-1" style={{ fontFamily: 'var(--font-manrope)' }}>
                           {lessons.length} aulas
                         </p>
                       </div>
@@ -126,13 +126,13 @@ export default function CoursesContent() {
 
                     {progress[course.id] !== undefined && progress[course.id] > 0 && (
                       <div className="mt-2">
-                        <div className="w-full bg-slate-700 rounded-full h-1">
+                        <div className="w-full bg-[#2a3050] rounded-full h-1">
                           <div
-                            className="bg-blue-500 h-1 rounded-full"
+                            className="bg-[#00E676] h-1 rounded-full"
                             style={{ width: `${progress[course.id]}%` }}
                           />
                         </div>
-                        <p className="text-xs text-slate-300 mt-1">
+                        <p className="text-xs text-[#a0a9c9] mt-1" style={{ fontFamily: 'var(--font-manrope)' }}>
                           {progress[course.id]}% concluído
                         </p>
                       </div>
@@ -145,11 +145,11 @@ export default function CoursesContent() {
             {/* Aulas */}
             <div className="lg:col-span-2">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-white">Aulas</h2>
+                <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'var(--font-space-grotesk)' }}>Aulas</h2>
 
                 {lessons.length === 0 ? (
-                  <div className="text-center py-12 bg-slate-800 rounded-lg">
-                    <p className="text-slate-300">Nenhuma aula disponível.</p>
+                  <div className="text-center py-12 bg-[#1a1f3a] rounded-lg">
+                    <p className="text-[#a0a9c9]" style={{ fontFamily: 'var(--font-manrope)' }}>Nenhuma aula disponível.</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
@@ -157,18 +157,18 @@ export default function CoursesContent() {
                       <Link
                         key={lesson.id}
                         href={`/dashboard/courses/${selectedCourse?.id}/${lesson.id}`}
-                        className="block p-4 border border-slate-700 rounded-lg hover:border-blue-400 hover:bg-slate-800 transition-all group bg-slate-800"
+                        className="block p-4 border border-[#2a3050] rounded-lg hover:border-[#2962FF] hover:bg-[#1a1f3a]/80 transition-all group bg-[#1a1f3a]"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1 min-w-0">
-                            <h3 className="font-semibold text-white group-hover:text-blue-300">
+                            <h3 className="font-semibold text-white group-hover:text-[#2962FF]" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
                               {lesson.title}
                             </h3>
-                            <p className="text-sm text-slate-300 mt-1 line-clamp-2">
+                            <p className="text-sm text-[#a0a9c9] mt-1 line-clamp-2" style={{ fontFamily: 'var(--font-manrope)' }}>
                               {lesson.description}
                             </p>
 
-                            <div className="flex items-center gap-4 mt-3 text-xs text-slate-400">
+                            <div className="flex items-center gap-4 mt-3 text-xs text-[#6b7280]" style={{ fontFamily: 'var(--font-manrope)' }}>
                               <div className="flex items-center gap-1">
                                 <Clock className="w-4 h-4" />
                                 {lesson.duration_minutes} min
@@ -180,7 +180,7 @@ export default function CoursesContent() {
                             </div>
                           </div>
 
-                          <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-blue-300 flex-shrink-0 mt-1" />
+                          <ArrowRight className="w-5 h-5 text-[#6b7280] group-hover:text-[#2962FF] flex-shrink-0 mt-1" />
                         </div>
                       </Link>
                     ))}

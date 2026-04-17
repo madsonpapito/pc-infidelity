@@ -6,7 +6,6 @@ import { login, signup } from '@/app/auth/actions'
 export default function LoginPage() {
   const [lang, setLang] = useState<'en' | 'es'>('en')
   
-  // Novo estado para controlar o Popup
   const [showModal, setShowModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -20,7 +19,6 @@ export default function LoginPage() {
       btnSignUp: "Sign Up (Create Account)",
       placeholderEmail: "example@email.com",
       placeholderPass: "••••••••",
-      // Traduções do Modal
       modalTitle: "Check your email!",
       modalBody: "We've sent a confirmation link to your email address. Please click the link to activate your account and access the dashboard.",
       modalBtn: "Got it, I'll check it"
@@ -34,7 +32,6 @@ export default function LoginPage() {
       btnSignUp: "Registrarse (Crear Cuenta)",
       placeholderEmail: "ejemplo@correo.com",
       placeholderPass: "••••••••",
-      // Traduções do Modal
       modalTitle: "¡Verifica tu correo!",
       modalBody: "Hemos enviado un enlace de confirmación a tu correo electrónico. Por favor haz clic en el enlace para activar tu cuenta y acceder al panel.",
       modalBtn: "Entendido, voy a revisar"
@@ -43,7 +40,6 @@ export default function LoginPage() {
 
   const text = t[lang]
 
-  // Função especial para lidar com o cadastro e abrir o modal
   const handleSignup = async (formData: FormData) => {
     setLoading(true)
     const result = await signup(formData)
@@ -52,13 +48,12 @@ export default function LoginPage() {
     if (result?.success) {
       setShowModal(true)
     } else {
-      // Aqui você poderia mostrar um erro se quisesse
       alert("Error signing up. Please try again.")
     }
   }
 
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-gray-900">
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0a0e27]">
       
       {/* IMAGEM DE FUNDO */}
       <div className="absolute inset-0 z-0 bg-[url('/bg.png')] bg-cover bg-center brightness-50" />
@@ -68,7 +63,7 @@ export default function LoginPage() {
         <button 
           onClick={() => setLang('en')}
           className={`px-3 py-1 rounded-full text-sm font-bold transition-all border ${
-            lang === 'en' ? 'bg-white text-black border-white' : 'bg-black/40 text-white border-white/50 hover:bg-black/60'
+            lang === 'en' ? 'bg-[#2962FF] text-white border-[#2962FF]' : 'bg-[#1a1f3a]/40 text-white border-[#2962FF]/50 hover:bg-[#1a1f3a]/60'
           }`}
         >
           EN
@@ -76,7 +71,7 @@ export default function LoginPage() {
         <button 
           onClick={() => setLang('es')}
           className={`px-3 py-1 rounded-full text-sm font-bold transition-all border ${
-            lang === 'es' ? 'bg-white text-black border-white' : 'bg-black/40 text-white border-white/50 hover:bg-black/60'
+            lang === 'es' ? 'bg-[#2962FF] text-white border-[#2962FF]' : 'bg-[#1a1f3a]/40 text-white border-[#2962FF]/50 hover:bg-[#1a1f3a]/60'
           }`}
         >
           ES
@@ -84,13 +79,13 @@ export default function LoginPage() {
       </div>
 
       {/* Cartão de Login */}
-      <div className="z-10 w-full max-w-md space-y-8 bg-white/95 backdrop-blur-md p-8 shadow-2xl rounded-xl mx-4 border border-white/20">
+      <div className="z-10 w-full max-w-md space-y-8 bg-[#1a1f3a]/95 backdrop-blur-md p-8 shadow-2xl rounded-xl mx-4 border border-[#2a3050]">
         
         <div className="text-center">
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-white" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
             {text.title}
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-[#a0a9c9]">
             {text.subtitle}
           </p>
         </div>
@@ -98,7 +93,7 @@ export default function LoginPage() {
         <form className="mt-8 space-y-6">
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-white" style={{ fontFamily: 'var(--font-manrope)' }}>
                 {text.emailLabel}
               </label>
               <div className="mt-1">
@@ -109,13 +104,14 @@ export default function LoginPage() {
                   autoComplete="email"
                   required
                   placeholder={text.placeholderEmail}
-                  className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+                  className="block w-full appearance-none rounded-md border border-[#2a3050] px-3 py-2 bg-[#0a0e27] text-white placeholder-[#6b7280] shadow-sm focus:border-[#2962FF] focus:outline-none focus:ring-2 focus:ring-[#2962FF] sm:text-sm"
+                  style={{ fontFamily: 'var(--font-manrope)' }}
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-white" style={{ fontFamily: 'var(--font-manrope)' }}>
                 {text.passwordLabel}
               </label>
               <div className="mt-1">
@@ -126,7 +122,8 @@ export default function LoginPage() {
                   autoComplete="current-password"
                   required
                   placeholder={text.placeholderPass}
-                  className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+                  className="block w-full appearance-none rounded-md border border-[#2a3050] px-3 py-2 bg-[#0a0e27] text-white placeholder-[#6b7280] shadow-sm focus:border-[#2962FF] focus:outline-none focus:ring-2 focus:ring-[#2962FF] sm:text-sm"
+                  style={{ fontFamily: 'var(--font-manrope)' }}
                 />
               </div>
             </div>
@@ -135,16 +132,17 @@ export default function LoginPage() {
           <div className="flex flex-col gap-3">
             <button
               formAction={login}
-              className="flex w-full justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-800 transition-colors"
+              className="flex w-full justify-center rounded-md border border-transparent bg-[#2962FF] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#1e47cc] transition-colors"
+              style={{ fontFamily: 'var(--font-manrope)' }}
             >
               {text.btnSignIn}
             </button>
             
-            {/* O Botão de Signup agora chama a função handleSignup */}
             <button
               formAction={handleSignup}
               disabled={loading}
-              className="flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors disabled:opacity-50"
+              className="flex w-full justify-center rounded-md border border-[#AA00FF] bg-transparent py-2 px-4 text-sm font-medium text-[#AA00FF] shadow-sm hover:bg-[#AA00FF]/10 transition-colors disabled:opacity-50"
+              style={{ fontFamily: 'var(--font-manrope)' }}
             >
               {loading ? "..." : text.btnSignUp}
             </button>
@@ -155,26 +153,27 @@ export default function LoginPage() {
       {/* MODAL / POPUP DE SUCESSO */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white rounded-lg shadow-2xl max-w-sm w-full p-6 text-center transform transition-all scale-100">
+          <div className="bg-[#1a1f3a] rounded-lg shadow-2xl max-w-sm w-full p-6 text-center transform transition-all scale-100 border border-[#2a3050]">
             
             {/* Ícone de Email */}
-            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
-              <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-[#00E676]/20 mb-4">
+              <svg className="h-6 w-6 text-[#00E676]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
 
-            <h3 className="text-lg font-bold text-gray-900 mb-2">
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
               {text.modalTitle}
             </h3>
             
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-[#a0a9c9] mb-6" style={{ fontFamily: 'var(--font-manrope)' }}>
               {text.modalBody}
             </p>
 
             <button
               onClick={() => setShowModal(false)}
-              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-black text-base font-medium text-white hover:bg-gray-800 focus:outline-none sm:text-sm"
+              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#2962FF] text-base font-medium text-white hover:bg-[#1e47cc] focus:outline-none sm:text-sm"
+              style={{ fontFamily: 'var(--font-manrope)' }}
             >
               {text.modalBtn}
             </button>
