@@ -24,7 +24,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
           >
             <Menu className="w-5 h-5" />
           </button>
-          <h1 className="text-lg md:text-2xl font-bold text-foreground truncate">{t.dashboard}</h1>
+          <h1 className="text-lg md:text-2xl font-bold text-white truncate">{t.dashboard}</h1>
         </div>
 
         {/* Right side - User menu and Language */}
@@ -37,7 +37,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
               aria-label="Language selector"
             >
               <Globe className="w-4 md:w-5 h-4 md:h-5" />
-              <span className="text-sm font-medium uppercase">{language}</span>
+              <span className="text-sm font-medium uppercase text-white">{language}</span>
               <ChevronDown className="w-3 h-3 hidden md:block" />
             </button>
             {showLanguage && (
@@ -47,7 +47,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
                     setLanguage("en")
                     setShowLanguage(false)
                   }}
-                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary ${
+                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary text-white ${
                     language === "en" ? "bg-secondary" : ""
                   }`}
                 >
@@ -60,8 +60,8 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
           {/* User Menu */}
           <div className="relative flex items-center gap-2 md:gap-3 border-l border-border pl-2 md:pl-4">
             <div className="text-right hidden md:block">
-              <p className="text-sm font-medium text-foreground truncate max-w-[100px]">{user?.username}</p>
-              <p className="text-xs text-muted-foreground truncate max-w-[100px]">{user?.email}</p>
+              <p className="text-sm font-medium text-white truncate max-w-[100px]">{user?.username}</p>
+              <p className="text-xs text-gray-400 truncate max-w-[100px]">{user?.email}</p>
             </div>
             <button
               onClick={() => setShowMenu(!showMenu)}
@@ -86,11 +86,11 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
                   onClick={() => setShowMenu(false)}
                 >
                   <Settings className="w-4 h-4" />
-                  {t.profile}
+                  <span className="text-white">{t.profile}</span>
                 </a>
                 <a
                   href="#"
-                  className="flex items-center gap-2 w-full px-4 py-2 hover:bg-secondary text-sm"
+                  className="flex items-center gap-2 w-full px-4 py-2 hover:bg-secondary text-sm text-white"
                   onClick={() => setShowMenu(false)}
                 >
                   <Settings className="w-4 h-4" />

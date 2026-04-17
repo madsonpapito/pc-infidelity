@@ -47,8 +47,8 @@ export default function DashboardHome() {
       <div className="space-y-4 md:space-y-6">
         <div>
           {/* 👇 3. Uso do operador ?. para evitar crash se 't' for undefined */}
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">{t?.welcome}</h1>
-          <p className="text-sm md:text-base text-muted-foreground mt-2">{t?.selectFeature}</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-white">{t?.welcome}</h1>
+          <p className="text-sm md:text-base text-gray-400 mt-2">{t?.selectFeature}</p>
         </div>
 
         {/* Stats Grid */}
@@ -59,8 +59,8 @@ export default function DashboardHome() {
               <div key={stat.label} className="bg-card rounded-lg border border-border shadow-sm p-4 md:p-6">
                 <div className="flex items-center justify-between gap-2">
                   <div className="min-w-0">
-                    <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>
-                    <p className="text-xl md:text-2xl font-bold text-foreground mt-1">{stat.value}</p>
+                    <p className="text-xs md:text-sm text-gray-400">{stat.label}</p>
+                    <p className="text-xl md:text-2xl font-bold text-white mt-1">{stat.value}</p>
                   </div>
                   <Icon className={`w-8 md:w-10 h-8 md:h-10 ${stat.color} opacity-20 flex-shrink-0`} />
                 </div>

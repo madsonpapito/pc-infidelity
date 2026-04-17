@@ -77,9 +77,9 @@ export default function LessonPage() {
   if (loading) {
 	    return (
 	      <DashboardLayout activeTab="courses">
-	        <div className="text-center py-12">
-	          <p className="text-muted-foreground">Loading lesson...</p>
-	        </div>
+        <div className="text-center py-12">
+          <p className="text-gray-400">Loading lesson...</p>
+        </div>
 	      </DashboardLayout>
 	    )
   }
@@ -87,12 +87,12 @@ export default function LessonPage() {
 	  if (!lesson || !course) {
 	    return (
 	      <DashboardLayout activeTab="courses">
-	        <div className="text-center py-12">
-	          <p className="text-muted-foreground">Lesson not found.</p>
-	          <Link href={`/dashboard/courses?category=${course?.category || "introduction"}`}>
-	            <Button className="mt-4">Back to Courses</Button>
-	          </Link>
-	        </div>
+        <div className="text-center py-12">
+          <p className="text-gray-400">Lesson not found.</p>
+          <Link href={`/dashboard/courses?category=${course?.category || "introduction"}`}>
+            <Button className="mt-4">Back to Courses</Button>
+          </Link>
+        </div>
 	      </DashboardLayout>
 	    )
 	  }
@@ -101,7 +101,7 @@ export default function LessonPage() {
     <DashboardLayout activeTab="courses">
       <div className="space-y-6">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex items-center gap-2 text-sm text-gray-400">
           <Link href={`/dashboard/courses?category=${course.category}`} className="hover:text-foreground">
             {course.title}
           </Link>
@@ -111,10 +111,10 @@ export default function LessonPage() {
 
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">{lesson.title}</h1>
-          <p className="text-muted-foreground">{lesson.description}</p>
+          <h1 className="text-3xl font-bold text-white mb-2">{lesson.title}</h1>
+          <p className="text-gray-400">{lesson.description}</p>
 
-          <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-4 mt-4 text-sm text-gray-400">
 	            <div className="flex items-center gap-1">
 	              <Clock className="w-4 h-4" />
 	              {lesson.duration_minutes} minutes
@@ -140,8 +140,8 @@ export default function LessonPage() {
               href={`/dashboard/courses/${courseId}/${previousLesson.id}`}
               className="p-4 border border-border rounded-lg hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all group text-left"
             >
-	              <p className="text-sm text-muted-foreground mb-1">← Previous Lesson</p>
-              <p className="font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400">
+	              <p className="text-sm text-gray-400 mb-1">← Previous Lesson</p>
+              <p className="font-semibold text-white group-hover:text-blue-400">
                 {previousLesson.title}
               </p>
             </Link>
@@ -154,8 +154,8 @@ export default function LessonPage() {
               href={`/dashboard/courses/${courseId}/${nextLesson.id}`}
               className="p-4 border border-border rounded-lg hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all group text-right"
             >
-	              <p className="text-sm text-muted-foreground mb-1">Next Lesson →</p>
-              <p className="font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400">
+	              <p className="text-sm text-gray-400 mb-1">Next Lesson →</p>
+              <p className="font-semibold text-white group-hover:text-blue-400">
                 {nextLesson.title}
               </p>
             </Link>

@@ -84,18 +84,18 @@ export default function CoursesContent() {
         {/* Header */}
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">{getCategoryTitle()}</h1>
-          <p className="text-slate-300">
+          <p className="text-gray-400">
             {selectedCourse?.description}
           </p>
         </div>
 
         {loading ? (
           <div className="text-center py-12">
-            <p className="text-slate-300">Loading courses...</p>
+            <p className="text-gray-400">Loading courses...</p>
           </div>
         ) : courses.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-slate-300">No courses available in this category.</p>
+            <p className="text-gray-400">No courses available in this category.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
