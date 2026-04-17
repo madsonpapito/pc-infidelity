@@ -1,112 +1,112 @@
--- Atualizar aulas com vídeos reais do TiSpy do YouTube
+-- Update lessons with real TiSpy YouTube videos
 
--- Comece Aqui - Introdução ao TiSpy
+-- Start Here - Introduction to TiSpy
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/a0oXhqpFa9Y', 
-    description = 'Aprenda como instalar e começar a usar o TiSpy. Vídeo oficial do canal TiSpy mostrando os primeiros passos.'
-WHERE title = 'Introdução ao TiSpy e Diferenças com o Scanner' 
+    description = 'Learn how to install and start using TiSpy. Official video from the TiSpy channel showing the first steps.'
+WHERE title = 'Introduction to TiSpy and Scanner Differences' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'introduction');
 
--- Comece Aqui - O Que é Espionagem Avançada
+-- Start Here - What is Advanced Spying
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/suNDvvB9xx4',
-    description = 'Entenda como funciona a espionagem digital avançada com TiSpy. Vídeo tutorial completo de instalação.'
-WHERE title = 'O Que é Espionagem Avançada?' 
+    description = 'Understand how advanced digital spying works with TiSpy. Complete installation tutorial video.'
+WHERE title = 'What is Advanced Spying?' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'introduction');
 
--- Tutorial de Instalação - Preparação e Primeiros Passos
+-- Installation Tutorial - Preparation and First Steps
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/cdcsM9bTJSE',
-    description = 'Guia completo de instalação do TiSpy em dispositivos Android. Siga os passos do vídeo oficial.',
+    description = 'Complete guide to installing TiSpy on Android devices. Follow the steps in the official video.',
     duration_minutes = 12
-WHERE title = 'Preparação e Primeiros Passos' 
+WHERE title = 'Preparation and First Steps' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'installation');
 
--- Tutorial de Instalação - Instalação Passo a Passo
+-- Installation Tutorial - Step-by-Step Installation
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/E3Os_B2pi4c',
-    description = 'Pós-instalação e configurações especiais do TiSpy. Descubra as melhores práticas para funcionamento perfeito.',
+    description = 'Post-installation and special TiSpy configurations. Discover best practices for perfect operation.',
     duration_minutes = 15
-WHERE title = 'Instalação Passo a Passo' 
+WHERE title = 'Step-by-Step Installation' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'installation');
 
--- Tutorial de Instalação - Dicas Práticas
+-- Installation Tutorial - Practical Tips
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/suNDvvB9xx4',
-    description = 'Dicas importantes de instalação: teste no seu próprio dispositivo primeiro, aprenda todos os recursos antes de usar em outro telefone.',
+    description = 'Important installation tips: test on your own device first, learn all features before using on another phone.',
     duration_minutes = 10
-WHERE title = 'Dicas Práticas de Instalação' 
+WHERE title = 'Practical Installation Tips' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'installation');
 
--- Painel Avançado - Visão Geral
+-- Advanced Panel - Overview
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/mKYzNNBw6kA',
-    description = 'Conheça todas as funcionalidades do painel de controle do TiSpy. Vídeo mostrando o controle parental completo.',
+    description = 'Get to know all the features of the TiSpy control panel. Video showing complete parental control.',
     duration_minutes = 18
-WHERE title = 'Visão Geral do Painel de Controle' 
+WHERE title = 'Control Panel Overview' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'advanced');
 
--- Painel Avançado - Monitoramento de Mensagens
+-- Advanced Panel - Message Monitoring
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/a0oXhqpFa9Y',
-    description = 'Aprenda a monitorar todas as mensagens, conversas privadas e grupos. Funcionalidade completa de monitoramento de SMS e aplicativos de mensagens.',
+    description = 'Learn to monitor all messages, private conversations, and groups. Full SMS and messaging app monitoring functionality.',
     duration_minutes = 16
-WHERE title = 'Monitoramento de Mensagens' 
+WHERE title = 'Message Monitoring' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'advanced');
 
--- Painel Avançado - Rastreamento de Localização
+-- Advanced Panel - Location Tracking
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/cdcsM9bTJSE',
-    description = 'Rastreie a localização em tempo real do dispositivo alvo com precisão GPS. Veja o histórico de localizações e geofencing.',
+    description = 'Track the real-time location of the target device with GPS precision. See location history and geofencing.',
     duration_minutes = 14
-WHERE title = 'Rastreamento de Localização' 
+WHERE title = 'Location Tracking' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'advanced');
 
--- Painel Avançado - Monitoramento de Redes Sociais
+-- Advanced Panel - Social Media Monitoring
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/E3Os_B2pi4c',
-    description = 'Monitore todas as atividades em redes sociais, mensagens privadas, chamadas de vídeo e muito mais. Suporte para WhatsApp, Instagram, Facebook, Telegram e mais.',
+    description = 'Monitor all social media activities, private messages, video calls, and more. Support for WhatsApp, Instagram, Facebook, Telegram, and more.',
     duration_minutes = 17
-WHERE title = 'Monitoramento de Redes Sociais' 
+WHERE title = 'Social Media Monitoring' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'advanced');
 
--- Painel Avançado - Gravação de Chamadas e Áudio
+-- Advanced Panel - Call and Audio Recording
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/mKYzNNBw6kA',
-    description = 'Grave chamadas telefônicas, áudio ambiente e conversas do dispositivo alvo. Qualidade de áudio profissional.',
+    description = 'Record phone calls, ambient audio, and conversations from the target device. Professional audio quality.',
     duration_minutes = 13
-WHERE title = 'Gravação de Chamadas e Áudio' 
+WHERE title = 'Call and Audio Recording' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'advanced');
 
--- Painel Avançado - Modo Stealth e Privacidade
+-- Advanced Panel - Stealth Mode and Privacy
 UPDATE lessons 
 SET video_url = 'https://www.youtube.com/embed/suNDvvB9xx4',
-    description = 'O TiSpy funciona 100% invisível sem deixar rastros. Aprenda como ativar o modo stealth completo para máxima privacidade.',
+    description = 'TiSpy works 100% invisible without leaving traces. Learn how to activate full stealth mode for maximum privacy.',
     duration_minutes = 12
-WHERE title = 'Modo Stealth e Privacidade' 
+WHERE title = 'Stealth Mode and Privacy' 
 AND course_id IN (SELECT id FROM courses WHERE category = 'advanced');
 
--- Adicionar novas aulas ao Painel Avançado
+-- Add new lessons to Advanced Panel (already in English now)
 INSERT INTO lessons (course_id, title, description, video_url, video_type, order_index, duration_minutes)
-SELECT id, 'Monitoramento de Aplicativos', 'Veja quais aplicativos estão instalados e bloqueie os que desejar. Controle total sobre as aplicações do dispositivo.', 'https://www.youtube.com/embed/mKYzNNBw6kA', 'youtube', 7, 14
+SELECT id, 'App Monitoring', 'See which apps are installed and block the ones you want. Full control over device applications.', 'https://www.youtube.com/embed/mKYzNNBw6kA', 'youtube', 7, 14
 FROM courses WHERE category = 'advanced';
 
 INSERT INTO lessons (course_id, title, description, video_url, video_type, order_index, duration_minutes)
-SELECT id, 'Controle Remoto do Dispositivo', 'Controle remotamente o dispositivo alvo. Faça factory reset, bloqueie a tela, gerencie arquivos e muito mais.', 'https://www.youtube.com/embed/a0oXhqpFa9Y', 'youtube', 8, 15
+SELECT id, 'Remote Device Control', 'Remotely control the target device. Perform factory reset, lock the screen, manage files, and more.', 'https://www.youtube.com/embed/a0oXhqpFa9Y', 'youtube', 8, 15
 FROM courses WHERE category = 'advanced';
 
 INSERT INTO lessons (course_id, title, description, video_url, video_type, order_index, duration_minutes)
-SELECT id, 'Monitoramento de Câmera e Fotos', 'Acesse a câmera do dispositivo em tempo real. Veja todas as fotos e vídeos capturados. Vigilância visual completa.', 'https://www.youtube.com/embed/E3Os_B2pi4c', 'youtube', 9, 16
+SELECT id, 'Camera and Photo Monitoring', 'Access the device camera in real-time. See all captured photos and videos. Complete visual surveillance.', 'https://www.youtube.com/embed/E3Os_B2pi4c', 'youtube', 9, 16
 FROM courses WHERE category = 'advanced';
 
 INSERT INTO lessons (course_id, title, description, video_url, video_type, order_index, duration_minutes)
-SELECT id, 'Histórico de Navegação e Cookies', 'Veja todo o histórico de navegação, sites visitados e cookies salvos. Monitore a atividade online completa.', 'https://www.youtube.com/embed/cdcsM9bTJSE', 'youtube', 10, 12
+SELECT id, 'Browsing History and Cookies', 'See all browsing history, visited sites, and saved cookies. Monitor complete online activity.', 'https://www.youtube.com/embed/cdcsM9bTJSE', 'youtube', 10, 12
 FROM courses WHERE category = 'advanced';
 
 INSERT INTO lessons (course_id, title, description, video_url, video_type, order_index, duration_minutes)
-SELECT id, 'Monitoramento de Contatos e Calendário', 'Acesse todos os contatos, calendários e eventos do dispositivo. Saiba com quem a pessoa se comunica.', 'https://www.youtube.com/embed/suNDvvB9xx4', 'youtube', 11, 11
+SELECT id, 'Contacts and Calendar Monitoring', 'Access all contacts, calendars, and events from the device. Know who the person communicates with.', 'https://www.youtube.com/embed/suNDvvB9xx4', 'youtube', 11, 11
 FROM courses WHERE category = 'advanced';
 
 INSERT INTO lessons (course_id, title, description, video_url, video_type, order_index, duration_minutes)
-SELECT id, 'Alertas e Notificações em Tempo Real', 'Configure alertas para palavras-chave, contatos específicos ou atividades. Receba notificações em tempo real.', 'https://www.youtube.com/embed/mKYzNNBw6kA', 'youtube', 12, 10
+SELECT id, 'Real-Time Alerts and Notifications', 'Set up alerts for keywords, specific contacts, or activities. Receive real-time notifications.', 'https://www.youtube.com/embed/mKYzNNBw6kA', 'youtube', 12, 10
 FROM courses WHERE category = 'advanced';
