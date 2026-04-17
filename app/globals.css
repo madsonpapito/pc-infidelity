@@ -108,6 +108,9 @@ html {
 }
 
 @layer base {
+  html {
+    @apply dark;
+  }
   * {
     @apply border-border;
   }

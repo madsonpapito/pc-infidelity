@@ -7,7 +7,7 @@ import CoursesContent from "@/components/courses-content"
 
 export default function CoursesPage() {
   return (
-    <Suspense fallback={<div className="text-center py-12"><p className="text-muted-foreground">Loading courses...</p></div>}>
+    <Suspense fallback={<div className="text-center py-12 bg-[#0a0e27]"><p className="text-muted-foreground">Loading courses...</p></div>}>
       <CoursesContent />
     </Suspense>
   )

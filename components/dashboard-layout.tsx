@@ -45,12 +45,12 @@ export default function DashboardLayout({
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden w-full">
+      <div className="flex-1 flex flex-col overflow-hidden w-full bg-[#0a0e27]">
         {/* Header */}
         <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
 
         {/* Content Area */}
-        <main className="flex-1 overflow-auto p-4 md:p-6">{children}</main>
+        <main className="flex-1 overflow-auto p-4 md:p-6 bg-[#0a0e27]">{children}</main>
       </div>
     </div>
   )

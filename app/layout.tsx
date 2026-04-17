@@ -32,7 +32,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body>
+      <body className="dark bg-[#0a0e27]">
         <Providers>{children}</Providers>
       </body>
     </html>
