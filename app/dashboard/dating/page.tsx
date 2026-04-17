@@ -437,11 +437,11 @@ function DatingAppScannerContent() {
       </div>
 
       {/* Image Upload */}
-      <div className="bg-white rounded-xl border-2 border-dashed border-blue-200 p-6 text-center hover:bg-blue-50/50 transition-colors">
-        <h2 className="font-bold text-gray-800 mb-4">1. Upload Target's Photo</h2>
+      <div className="bg-card rounded-xl border-2 border-dashed border-blue-400/50 p-6 text-center hover:bg-muted transition-colors">
+        <h2 className="font-bold text-foreground mb-4">1. Upload Target's Photo</h2>
         <label
           htmlFor="photo-upload"
-          className="w-40 h-40 mx-auto flex items-center justify-center bg-gray-50 border-2 border-blue-100 rounded-full cursor-pointer overflow-hidden relative shadow-sm hover:scale-105 transition-transform"
+          className="w-40 h-40 mx-auto flex items-center justify-center bg-muted border-2 border-blue-400/30 rounded-full cursor-pointer overflow-hidden relative shadow-sm hover:scale-105 transition-transform"
         >
           <input
             id="photo-upload"
@@ -463,12 +463,12 @@ function DatingAppScannerContent() {
             </div>
           )}
         </label>
-        <p className="text-xs text-gray-400 mt-4">AI Face Recognition Technology</p>
+        <p className="text-xs text-muted-foreground mt-4">AI Face Recognition Technology</p>
       </div>
 
       {/* Gender Select */}
       <div className="text-center">
-        <h2 className="font-bold text-gray-800 mb-3 text-left">2. Select Gender</h2>
+        <h2 className="font-bold text-foreground mb-3 text-left">2. Select Gender</h2>
         <div className="grid grid-cols-3 gap-3">
           {["Male", "Female", "Non-binary"].map((gender) => (
             <button
@@ -476,11 +476,11 @@ function DatingAppScannerContent() {
               onClick={() => setSelectedGender(gender)}
               className={`p-3 border rounded-xl transition-all duration-200 flex flex-col items-center justify-center gap-2 ${selectedGender === gender
                 ? "border-pink-500 bg-pink-50 ring-1 ring-pink-500"
-                : "border-gray-200 hover:border-gray-300"
+                : "border-border hover:border-primary/50"
                 }`}
             >
               <span className="text-3xl">{genderEmojis[gender]}</span>
-              <span className="text-xs font-bold text-gray-700">{gender}</span>
+              <span className="text-xs font-bold text-foreground">{gender}</span>
             </button>
           ))}
         </div>
@@ -514,17 +514,17 @@ function DatingAppScannerContent() {
         )}
       </div>
       <div>
-        <h2 className="text-xl font-bold text-gray-800">Scanning Database...</h2>
-        <p className="text-sm text-gray-500 mt-2 mb-4">Checking Tinder, Bumble, Hinge, and 14 others...</p>
+        <h2 className="text-xl font-bold text-foreground">Scanning Database...</h2>
+        <p className="text-sm text-muted-foreground mt-2 mb-4">Checking Tinder, Bumble, Hinge, and 14 others...</p>
 
         {/* Progress Bar */}
-        <div className="w-full max-w-xs mx-auto bg-gray-200 rounded-full h-2.5 overflow-hidden">
+        <div className="w-full max-w-xs mx-auto bg-muted rounded-full h-2.5 overflow-hidden">
           <div
             className="bg-gradient-to-r from-red-500 to-pink-600 h-2.5 rounded-full transition-all duration-300 ease-out"
             style={{ width: `${loadingProgress}%` }}
           ></div>
         </div>
-        <p className="text-xs text-gray-400 mt-2 font-mono">{Math.floor(loadingProgress)}% COMPLETED</p>
+        <p className="text-xs text-muted-foreground mt-2 font-mono">{Math.floor(loadingProgress)}% COMPLETED</p>
       </div>
     </div>
   )
@@ -545,36 +545,36 @@ function DatingAppScannerContent() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-4 gap-2">
-        <div className="bg-white p-2 py-3 rounded-lg border text-center shadow-sm">
-          <p className="text-xl font-bold text-red-600">{matches.length}</p>
-          <p className="text-[10px] text-gray-500 font-bold uppercase">Matches</p>
+        <div className="bg-card p-2 py-3 rounded-lg border border-border text-center shadow-sm">
+          <p className="text-xl font-bold text-red-400">{matches.length}</p>
+          <p className="text-[10px] text-muted-foreground font-bold uppercase">Matches</p>
         </div>
-        <div className="bg-white p-2 py-3 rounded-lg border text-center shadow-sm">
-          <p className="text-xl font-bold text-orange-500">30+</p>
-          <p className="text-[10px] text-gray-500 font-bold uppercase">Likes</p>
+        <div className="bg-card p-2 py-3 rounded-lg border border-border text-center shadow-sm">
+          <p className="text-xl font-bold text-orange-400">30+</p>
+          <p className="text-[10px] text-muted-foreground font-bold uppercase">Likes</p>
         </div>
-        <div className="bg-white p-2 py-3 rounded-lg border text-center shadow-sm">
-          <p className="text-xl font-bold text-purple-600">3</p>
-          <p className="text-[10px] text-gray-500 font-bold uppercase">Chats</p>
+        <div className="bg-card p-2 py-3 rounded-lg border border-border text-center shadow-sm">
+          <p className="text-xl font-bold text-purple-400">3</p>
+          <p className="text-[10px] text-muted-foreground font-bold uppercase">Chats</p>
         </div>
-        <div className="bg-white p-2 py-3 rounded-lg border text-center shadow-sm">
-          <p className="text-xl font-bold text-gray-800">2h</p>
-          <p className="text-[10px] text-gray-500 font-bold uppercase">Last Seen</p>
+        <div className="bg-card p-2 py-3 rounded-lg border border-border text-center shadow-sm">
+          <p className="text-xl font-bold text-foreground">2h</p>
+          <p className="text-[10px] text-muted-foreground font-bold uppercase">Last Seen</p>
         </div>
       </div>
 
       {/* --- TABS --- */}
-      <div className="flex p-1 bg-gray-100 rounded-xl overflow-x-auto no-scrollbar mt-4">
+      <div className="flex p-1 bg-muted rounded-xl overflow-x-auto no-scrollbar mt-4">
         <button
           onClick={() => setResultTab("matches")}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "matches" ? "bg-white text-pink-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "matches" ? "bg-card text-pink-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
             }`}
         >
           <Flame size={18} /> Recent Matches
         </button>
         <button
           onClick={() => setResultTab("chats")}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "chats" ? "bg-white text-blue-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "chats" ? "bg-card text-blue-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
             }`}
         >
           <MessageCircle size={18} /> Chats
@@ -587,22 +587,22 @@ function DatingAppScannerContent() {
         {/* 1. ABA DE MATCHES */}
         {resultTab === "matches" && (
           <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
-            <h3 className="font-bold text-lg flex items-center gap-2 text-gray-800">
+            <h3 className="font-bold text-lg flex items-center gap-2 text-foreground">
               <Flame className="text-pink-500 fill-pink-500 w-5 h-5" /> Active Matches
             </h3>
             <div className="grid grid-cols-1 gap-3">
               {matches.map((match, i) => (
-                <div key={i} className="flex gap-4 p-3 bg-white border border-gray-100 rounded-xl shadow-sm hover:border-pink-200 transition-colors">
+                <div key={i} className="flex gap-4 p-3 bg-card border border-border rounded-xl shadow-sm hover:border-pink-400 transition-colors">
                   <img src={match.avatar} alt={match.name} className="w-16 h-16 rounded-lg object-cover" />
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start">
-                      <h4 className="font-bold text-gray-900 truncate">{match.name}, {match.age}</h4>
+                      <h4 className="font-bold text-foreground truncate">{match.name}, {match.age}</h4>
                       {match.verified && <CheckCircle size={14} className="text-blue-500 mt-1" />}
                     </div>
-                    <div className="flex items-center gap-1 text-xs text-gray-500 mt-1">
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
                       <MapPin size={12} /> {match.distance} away
                     </div>
-                    <p className="text-xs text-gray-600 mt-2 line-clamp-1 italic">"{match.bio}"</p>
+                    <p className="text-xs text-muted-foreground mt-2 line-clamp-1 italic">"{match.bio}"</p>
                   </div>
                 </div>
               ))}
@@ -613,17 +613,17 @@ function DatingAppScannerContent() {
         {/* 2. ABA DE CHATS */}
         {resultTab === "chats" && (
           <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
-            <h3 className="font-bold text-lg flex items-center gap-2 text-gray-800">
+            <h3 className="font-bold text-lg flex items-center gap-2 text-foreground">
               <MessageCircle className="text-blue-500 w-5 h-5" /> Intercepted Conversations
             </h3>
-            <p className="text-sm text-gray-500 mb-2">Click on a chat to view history.</p>
+            <p className="text-sm text-muted-foreground mb-2">Click on a chat to view history.</p>
 
             <div className="space-y-3">
               {matches.filter(m => m.chatHistory).map((match, i) => (
                 <div
                   key={i}
                   onClick={() => setSelectedChat(match)}
-                  className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group"
+                  className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group"
                 >
                   <div className="relative">
                     <img src={match.avatar} alt={match.name} className="w-12 h-12 rounded-full object-cover border border-gray-200" />
@@ -631,10 +631,10 @@ function DatingAppScannerContent() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-center mb-1">
-                      <p className="font-bold text-gray-900">{match.name}</p>
-                      <span className="text-[10px] text-gray-400">Just now</span>
+                      <p className="font-bold text-foreground">{match.name}</p>
+                      <span className="text-[10px] text-muted-foreground">Just now</span>
                     </div>
-                    <p className="text-sm text-gray-600 truncate flex items-center">
+                    <p className="text-sm text-muted-foreground truncate flex items-center">
                       <span className="w-2 h-2 rounded-full bg-blue-500 mr-2 flex-shrink-0"></span>
                       Click to read messages...
                     </p>

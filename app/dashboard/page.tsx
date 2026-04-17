@@ -56,7 +56,7 @@ export default function DashboardHome() {
           {stats.map((stat) => {
             const Icon = stat.icon
             return (
-              <div key={stat.label} className="bg-white rounded-lg border border-border shadow-sm p-4 md:p-6">
+              <div key={stat.label} className="bg-card rounded-lg border border-border shadow-sm p-4 md:p-6">
                 <div className="flex items-center justify-between gap-2">
                   <div className="min-w-0">
                     <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>

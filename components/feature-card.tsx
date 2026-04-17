@@ -10,7 +10,7 @@ interface FeatureCardProps {
 
 export default function FeatureCard({ title, description, children }: FeatureCardProps) {
   return (
-    <div className="bg-white rounded-lg border border-border shadow-sm p-6">
+    <div className="bg-card rounded-lg border border-border shadow-sm p-6">
       <h2 className="text-2xl font-bold text-foreground mb-2">{title}</h2>
       <p className="text-muted-foreground mb-6">{description}</p>
       {children}

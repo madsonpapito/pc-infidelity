@@ -123,7 +123,7 @@ export default function LessonPage() {
         </div>
 
         {/* Video Player */}
-        <div className="bg-white dark:bg-slate-950 rounded-lg p-6 border border-border">
+        <div className="bg-card rounded-lg p-6 border border-border">
           <VideoPlayer
             videoUrl={lesson.video_url}
             videoType={lesson.video_type as "youtube" | "vimeo" | "direct"}

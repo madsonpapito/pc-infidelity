@@ -649,7 +649,7 @@ export default function WhatsAppScannerPage() {
                             onClick={() => setSelectedGender(g as any)}
                             className={`p-4 rounded-xl border-2 flex flex-col items-center justify-center space-y-2 transition-all hover:scale-105 ${selectedGender === g
                                 ? "border-green-500 bg-green-50 shadow-md"
-                                : "border-border bg-white hover:border-green-200"
+                                : "border-border bg-card hover:border-green-400"
                                 }`}
                         >
                             <span className="text-3xl">{g === "Male" ? "👨🏻" : g === "Female" ? "👩🏻" : "🧑🏻"}</span>
@@ -666,7 +666,7 @@ export default function WhatsAppScannerPage() {
                     <div className="relative">
                         <button
                             onClick={() => setShowCountryDropdown(!showCountryDropdown)}
-                            className="flex items-center gap-2 h-12 px-3 border rounded-lg bg-white hover:bg-gray-50 min-w-[100px]"
+                            className="flex items-center gap-2 h-12 px-3 border border-border rounded-lg bg-card hover:bg-muted min-w-[100px]"
                         >
                             <span className="text-xl">{selectedCountry.flag}</span>
                             <span className="text-sm font-medium">{selectedCountry.code}</span>
@@ -674,8 +674,8 @@ export default function WhatsAppScannerPage() {
                         </button>
 
                         {showCountryDropdown && (
-                            <div className="absolute top-full left-0 mt-2 bg-white border rounded-xl shadow-xl z-50 w-64 max-h-60 overflow-y-auto">
-                                <div className="p-2 sticky top-0 bg-white border-b">
+                            <div className="absolute top-full left-0 mt-2 bg-card border border-border rounded-xl shadow-xl z-50 w-64 max-h-60 overflow-y-auto">
+                                <div className="p-2 sticky top-0 bg-card border-b border-border">
                                     <Input
                                         value={countrySearch}
                                         onChange={e => setCountrySearch(e.target.value)}
@@ -789,17 +789,17 @@ export default function WhatsAppScannerPage() {
             </div>
 
             {/* Abas de Navegação */}
-            <div className="flex p-1 bg-gray-100 rounded-xl overflow-x-auto no-scrollbar">
+            <div className="flex p-1 bg-muted rounded-xl overflow-x-auto no-scrollbar">
                 <button
                     onClick={() => setResultTab("chats")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "chats" ? "bg-white text-green-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "chats" ? "bg-card text-green-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
                         }`}
                 >
                     <MessageCircle size={18} /> Chats
                 </button>
                 <button
                     onClick={() => setResultTab("media")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "media" ? "bg-white text-green-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "media" ? "bg-card text-green-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
                         }`}
                 >
                     <ImageIcon size={18} /> Recovered Media
@@ -812,27 +812,27 @@ export default function WhatsAppScannerPage() {
                 {/* 1. ABA CHATS */}
                 {resultTab === "chats" && (
                     <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
-                        <h3 className="font-bold text-sm text-gray-700 flex items-center gap-2">
+                        <h3 className="font-bold text-sm text-foreground flex items-center gap-2">
                             <MessageCircle size={16} /> Recent Conversations (4 Found)
                         </h3>
-                        <p className="text-xs text-gray-500">Click on a chat to read the history.</p>
+                        <p className="text-xs text-muted-foreground">Click on a chat to read the history.</p>
 
                         <div className="space-y-2">
                             {reportConversations.map((convo, i) => (
                                 <div
                                     key={i}
                                     onClick={() => setSelectedConvoIndex(i)}
-                                    className="flex items-center gap-3 p-3 bg-white hover:bg-gray-50 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition-colors group"
+                                    className="flex items-center gap-3 p-3 bg-card hover:bg-muted border border-border rounded-lg shadow-sm cursor-pointer transition-colors group"
                                 >
                                     <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden relative border border-gray-200">
                                         <img src={convo.img || "/placeholder.svg"} className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="user" />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <div className="flex justify-between items-center mb-0.5">
-                                            <p className="font-semibold text-sm truncate text-gray-900">{convo.name}</p>
+                                            <p className="font-semibold text-sm truncate text-foreground">{convo.name}</p>
                                             <span className="text-[10px] text-green-600 font-medium">{convo.time}</span>
                                         </div>
-                                        <p className="text-xs text-gray-500 truncate flex items-center gap-1">
+                                        <p className="text-xs text-muted-foreground truncate flex items-center gap-1">
                                             <CheckCheck size={12} className="text-blue-400" />
                                             {convo.lastMsg}
                                         </p>
@@ -846,12 +846,12 @@ export default function WhatsAppScannerPage() {
                 {/* 2. ABA MEDIA */}
                 {resultTab === "media" && (
                     <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
-                        <h3 className="font-bold text-sm text-gray-700 flex items-center gap-2">
+                        <h3 className="font-bold text-sm text-foreground flex items-center gap-2">
                             <ImageIcon size={16} /> Recovered Media (9 Photos)
                         </h3>
                         <div className="grid grid-cols-3 gap-2">
                             {reportMedia.map((img, i) => (
-                                <div key={i} className="aspect-square bg-gray-100 rounded-lg overflow-hidden relative group shadow-sm border border-gray-100">
+                                <div key={i} className="aspect-square bg-muted rounded-lg overflow-hidden relative group shadow-sm border border-border">
                                     <img src={img || "/placeholder.svg"} className="w-full h-full object-cover transition-transform group-hover:scale-105" alt="media" />
                                 </div>
                             ))}

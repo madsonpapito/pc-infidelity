@@ -13,7 +13,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
   const [showLanguage, setShowLanguage] = useState(false)
 
   return (
-    <header className="bg-white border-b border-border shadow-sm sticky top-0 z-20">
+    <header className="bg-card border-b border-border shadow-sm sticky top-0 z-20">
       <div className="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 gap-4">
         {/* Left side - Menu button and Logo */}
         <div className="flex items-center gap-2 md:gap-4 min-w-0">
@@ -41,7 +41,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
               <ChevronDown className="w-3 h-3 hidden md:block" />
             </button>
             {showLanguage && (
-              <div className="absolute right-0 mt-2 w-32 bg-white border border-border rounded-md shadow-lg z-50">
+              <div className="absolute right-0 mt-2 w-32 bg-card border border-border rounded-md shadow-lg z-50">
                 <button
                   onClick={() => {
                     setLanguage("en")
@@ -90,7 +90,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
 
             {/* User Dropdown Menu */}
             {showMenu && (
-              <div className="absolute right-0 top-14 w-48 bg-white border border-border rounded-md shadow-lg z-50">
+              <div className="absolute right-0 top-14 w-48 bg-card border border-border rounded-md shadow-lg z-50">
                 <a
                   href="#"
                   className="flex items-center gap-2 w-full px-4 py-2 hover:bg-secondary text-sm"
