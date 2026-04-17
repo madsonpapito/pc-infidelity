@@ -53,17 +53,6 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
                 >
                   English
                 </button>
-                <button
-                  onClick={() => {
-                    setLanguage("es")
-                    setShowLanguage(false)
-                  }}
-                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary ${
-                    language === "es" ? "bg-secondary" : ""
-                  }`}
-                >
-                  Español
-                </button>
               </div>
             )}
           </div>

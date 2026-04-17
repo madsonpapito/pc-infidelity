@@ -66,15 +66,15 @@ export default function CoursesContent() {
   const getCategoryTitle = () => {
     switch (category) {
       case "introduction":
-        return "Comece Aqui"
+        return t.startHere
       case "installation":
-        return "Tutorial de Instalação"
+        return t.installationTutorial
       case "advanced":
-        return "Painel Avançado"
+        return t.advancedPanel
       case "bonus":
-        return "Ferramentas Bónus"
+        return "Bonus Tools"
       default:
-        return "Cursos"
+        return "Courses"
     }
   }
 
@@ -91,11 +91,11 @@ export default function CoursesContent() {
 
         {loading ? (
           <div className="text-center py-12">
-            <p className="text-slate-300">Carregando cursos...</p>
+            <p className="text-slate-300">Loading courses...</p>
           </div>
         ) : courses.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-slate-300">Nenhum curso disponível nesta categoria.</p>
+            <p className="text-slate-300">No courses available in this category.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -115,9 +115,9 @@ export default function CoursesContent() {
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex-1">
                         <h3 className="font-semibold text-white" style={{ fontFamily: 'var(--font-space-grotesk)' }}>{course.title}</h3>
-                        <p className="text-sm text-[#a0a9c9] mt-1" style={{ fontFamily: 'var(--font-manrope)' }}>
-                          {lessons.length} aulas
-                        </p>
+	                        <p className="text-sm text-[#a0a9c9] mt-1" style={{ fontFamily: 'var(--font-manrope)' }}>
+	                          {lessons.length} lessons
+	                        </p>
                       </div>
                       {progress[course.id] === 100 && (
                         <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
@@ -133,8 +133,8 @@ export default function CoursesContent() {
                           />
                         </div>
                         <p className="text-xs text-[#a0a9c9] mt-1" style={{ fontFamily: 'var(--font-manrope)' }}>
-                          {progress[course.id]}% concluído
-                        </p>
+	                          {progress[course.id]}% completed
+	                        </p>
                       </div>
                     )}
                   </button>
@@ -142,15 +142,15 @@ export default function CoursesContent() {
               </div>
             </div>
 
-            {/* Aulas */}
-            <div className="lg:col-span-2">
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'var(--font-space-grotesk)' }}>Aulas</h2>
-
-                {lessons.length === 0 ? (
-                  <div className="text-center py-12 bg-[#1a1f3a] rounded-lg">
-                    <p className="text-[#a0a9c9]" style={{ fontFamily: 'var(--font-manrope)' }}>Nenhuma aula disponível.</p>
-                  </div>
+	            {/* Lessons */}
+	            <div className="lg:col-span-2">
+	              <div className="space-y-4">
+	                <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'var(--font-space-grotesk)' }}>Lessons</h2>
+	
+	                {lessons.length === 0 ? (
+	                  <div className="text-center py-12 bg-[#1a1f3a] rounded-lg">
+	                    <p className="text-[#a0a9c9]" style={{ fontFamily: 'var(--font-manrope)' }}>No lessons available.</p>
+	                  </div>
                 ) : (
                   <div className="space-y-3">
                     {lessons.map((lesson) => (
@@ -173,10 +173,10 @@ export default function CoursesContent() {
                                 <Clock className="w-4 h-4" />
                                 {lesson.duration_minutes} min
                               </div>
-                              <div className="flex items-center gap-1">
-                                <BookOpen className="w-4 h-4" />
-                                Vídeo
-                              </div>
+	                              <div className="flex items-center gap-1">
+	                                <BookOpen className="w-4 h-4" />
+	                                Video
+	                              </div>
                             </div>
                           </div>
 

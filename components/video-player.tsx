@@ -74,45 +74,45 @@ export default function VideoPlayer({
                 }
               }}
             >
-              Seu navegador não suporta reprodução de vídeo.
-            </video>
+	            Your browser does not support video playback.
+	          </video>
           )}
         </div>
 
         {/* Badge de Conclusão */}
         {isWatched && (
           <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full flex items-center gap-2 text-sm font-medium">
-            <CheckCircle2 className="w-4 h-4" />
-            Concluído
-          </div>
+	            <CheckCircle2 className="w-4 h-4" />
+	            Completed
+	          </div>
         )}
       </div>
 
       {/* Ações */}
       <div className="flex gap-3 items-center">
-        {!isWatched && (
-          <Button onClick={handleMarkComplete} className="gap-2">
-            <CheckCircle2 className="w-4 h-4" />
-            Marcar como Assistido
-          </Button>
-        )}
+	        {!isWatched && (
+	          <Button onClick={handleMarkComplete} className="gap-2">
+	            <CheckCircle2 className="w-4 h-4" />
+	            Mark as Watched
+	          </Button>
+	        )}
 
-        {isWatched && (
-          <div className="flex items-center gap-2 text-green-600 font-medium">
-            <CheckCircle2 className="w-5 h-5" />
-            Aula concluída!
-          </div>
-        )}
+	        {isWatched && (
+	          <div className="flex items-center gap-2 text-green-600 font-medium">
+	            <CheckCircle2 className="w-5 h-5" />
+	            Lesson completed!
+	          </div>
+	        )}
       </div>
 
       {/* Info */}
-      <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
-        <p className="text-sm text-slate-600 dark:text-slate-400">
-          {videoType === "youtube" && "Vídeo do YouTube"}
-          {videoType === "vimeo" && "Vídeo do Vimeo"}
-          {videoType === "direct" && "Vídeo direto"}
-        </p>
-      </div>
+	      <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
+	        <p className="text-sm text-slate-600 dark:text-slate-400">
+	          {videoType === "youtube" && "YouTube Video"}
+	          {videoType === "vimeo" && "Vimeo Video"}
+	          {videoType === "direct" && "Direct Video"}
+	        </p>
+	      </div>
     </div>
   )
 }

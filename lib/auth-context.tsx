@@ -31,7 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const storedUser = localStorage.getItem("dashboardUser")
-      const storedLanguage = (localStorage.getItem("language") as "en" | "es") || "en"
+      const storedLanguage = "en"
 
       if (storedUser) {
         setUser(JSON.parse(storedUser))
@@ -57,8 +57,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const setLanguage = (lang: "en" | "es") => {
-    setLanguageState(lang)
-    localStorage.setItem("language", lang)
+    setLanguageState("en")
+    localStorage.setItem("language", "en")
   }
 
   const logout = () => {

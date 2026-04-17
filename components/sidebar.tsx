@@ -32,7 +32,7 @@ interface MenuItem {
   icon: React.ComponentType<any>
   path: string
   blocked: boolean
-  section: "Aulas" | "Scanner"
+  section: "Lessons" | "Scanner"
 }
 
 export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
@@ -43,27 +43,27 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
     // Seção de Aulas
     {
       id: "comece-aqui",
-      label: "Comece Aqui",
+      label: t.startHere,
       icon: Home,
       path: "/dashboard/courses?category=introduction",
       blocked: false,
-      section: "Aulas",
+      section: "Lessons",
     },
     {
       id: "tutorial-instalacao",
-      label: "Tutorial de Instalação",
+      label: t.installationTutorial,
       icon: BookOpen,
       path: "/dashboard/courses?category=installation",
       blocked: false,
-      section: "Aulas",
+      section: "Lessons",
     },
     {
       id: "painel-avancado",
-      label: "Painel Avançado",
+      label: t.advancedPanel,
       icon: Zap,
       path: "/dashboard/courses?category=advanced",
       blocked: false,
-      section: "Aulas",
+      section: "Lessons",
     },
 
     // Seção de Scanner (Original)
@@ -125,7 +125,7 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
     },
   ]
 
-  const sections = ["Aulas", "Scanner"] as const
+  const sections = ["Lessons", "Scanner"] as const
 
   return (
     <aside
@@ -174,7 +174,7 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
                         onClick={onToggle}
                         className={`flex items-center gap-3 px-4 py-3 rounded-md transition-all mb-2 text-sm md:text-sm ${
                           isActive
-                            ? section === "Aulas"
+                            ? section === "Lessons"
                               ? "bg-[#2962FF] text-white font-semibold"
                               : "bg-[#AA00FF] text-white font-semibold"
                             : "text-[#a0a9c9] hover:bg-[#1a1f3a] hover:text-white"

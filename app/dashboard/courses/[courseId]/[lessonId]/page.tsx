@@ -75,27 +75,27 @@ export default function LessonPage() {
   const nextLesson = currentLessonIndex < allLessons.length - 1 ? allLessons[currentLessonIndex + 1] : null
 
   if (loading) {
-    return (
-      <DashboardLayout activeTab="courses">
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">Carregando aula...</p>
-        </div>
-      </DashboardLayout>
-    )
+	    return (
+	      <DashboardLayout activeTab="courses">
+	        <div className="text-center py-12">
+	          <p className="text-muted-foreground">Loading lesson...</p>
+	        </div>
+	      </DashboardLayout>
+	    )
   }
 
-  if (!lesson || !course) {
-    return (
-      <DashboardLayout activeTab="courses">
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">Aula não encontrada.</p>
-          <Link href={`/dashboard/courses?category=${course?.category || "introduction"}`}>
-            <Button className="mt-4">Voltar aos Cursos</Button>
-          </Link>
-        </div>
-      </DashboardLayout>
-    )
-  }
+	  if (!lesson || !course) {
+	    return (
+	      <DashboardLayout activeTab="courses">
+	        <div className="text-center py-12">
+	          <p className="text-muted-foreground">Lesson not found.</p>
+	          <Link href={`/dashboard/courses?category=${course?.category || "introduction"}`}>
+	            <Button className="mt-4">Back to Courses</Button>
+	          </Link>
+	        </div>
+	      </DashboardLayout>
+	    )
+	  }
 
   return (
     <DashboardLayout activeTab="courses">
@@ -115,10 +115,10 @@ export default function LessonPage() {
           <p className="text-muted-foreground">{lesson.description}</p>
 
           <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              {lesson.duration_minutes} minutos
-            </div>
+	            <div className="flex items-center gap-1">
+	              <Clock className="w-4 h-4" />
+	              {lesson.duration_minutes} minutes
+	            </div>
           </div>
         </div>
 
@@ -140,7 +140,7 @@ export default function LessonPage() {
               href={`/dashboard/courses/${courseId}/${previousLesson.id}`}
               className="p-4 border border-border rounded-lg hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all group text-left"
             >
-              <p className="text-sm text-muted-foreground mb-1">← Aula Anterior</p>
+	              <p className="text-sm text-muted-foreground mb-1">← Previous Lesson</p>
               <p className="font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400">
                 {previousLesson.title}
               </p>
@@ -154,7 +154,7 @@ export default function LessonPage() {
               href={`/dashboard/courses/${courseId}/${nextLesson.id}`}
               className="p-4 border border-border rounded-lg hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all group text-right"
             >
-              <p className="text-sm text-muted-foreground mb-1">Próxima Aula →</p>
+	              <p className="text-sm text-muted-foreground mb-1">Next Lesson →</p>
               <p className="font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400">
                 {nextLesson.title}
               </p>
@@ -164,13 +164,13 @@ export default function LessonPage() {
           )}
         </div>
 
-        {/* Back Button */}
-        <Link href={`/dashboard/courses?category=${course.category}`}>
-          <Button variant="outline" className="gap-2">
-            <ArrowLeft className="w-4 h-4" />
-            Voltar aos Cursos
-          </Button>
-        </Link>
+	        {/* Back Button */}
+	        <Link href={`/dashboard/courses?category=${course.category}`}>
+	          <Button variant="outline" className="gap-2">
+	            <ArrowLeft className="w-4 h-4" />
+	            Back to Courses
+	          </Button>
+	        </Link>
       </div>
     </DashboardLayout>
   )
