@@ -1,83 +1,150 @@
-"use client"
-
-// 👇 1. ESTA LINHA É OBRIGATÓRIA PARA CORRIGIR O ERRO DE BUILD
-export const dynamic = "force-dynamic"
-
-import { useAuth } from "@/lib/auth-context"
-import { translations } from "@/lib/translations"
+// Dashboard Page is a Server component
 import DashboardLayout from "@/components/dashboard-layout"
-import { Activity, TrendingUp, Users, Zap } from "lucide-react"
+import { PlayCircle, CheckSquare, Settings, Star, Check } from "lucide-react"
+import Link from "next/link"
+import { createClient } from "@/utils/supabase/server"
 
-export default function DashboardHome() {
-  const { language } = useAuth()
+export default async function DashboardPage() {
+  const supabase = await createClient();
+  
+  // Realiza query às tabelas traduzidas ('lessons' e 'courses')
+  const { count: lessonsCount } = await supabase
+    .from('lessons')
+    .select('*', { count: 'exact', head: true });
 
-  // 👇 2. Proteção contra falha no carregamento do idioma
-  const currentLang = language || "en"
-  const t = translations[currentLang] || translations["en"]
+  const { count: categoriesCount } = await supabase
+    .from('courses')
+    .select('*', { count: 'exact', head: true });
 
-  const stats = [
+  const dynamicLessons = lessonsCount ?? 0;
+  const dynamicCategories = categoriesCount ?? 0;
+
+  const modules = [
     {
-      icon: Activity,
-      label: "Instagram Scans",
-      value: "0",
-      color: "text-pink-600",
+      id: "intro",
+      title: "Start Here",
+      description: "Introduction to TiSpy",
+      subText: "2 lessons",
+      icon: PlayCircle,
+      color: "bg-blue-600",
+      buttonText: "Start Lessons →",
+      path: "/dashboard"
     },
     {
-      icon: Users,
-      label: "WhatsApp Profiles",
-      value: "0",
-      color: "text-green-600",
+      id: "tutorial",
+      title: "Installation Tutorial",
+      description: "Practical guide to start",
+      subText: "3 lessons",
+      icon: CheckSquare,
+      color: "bg-purple-600",
+      buttonText: "Start Lessons →",
+      path: "/dashboard/tutorial"
     },
     {
-      icon: Zap,
-      label: "Dating Profiles",
-      value: "0",
-      color: "text-purple-600",
+      id: "advanced",
+      title: "Advanced Panel",
+      description: "Master the features",
+      subText: "6 lessons",
+      icon: Settings,
+      color: "bg-orange-500",
+      buttonText: "Start Lessons →",
+      path: "/dashboard/scanners"
     },
     {
-      icon: TrendingUp,
-      label: "Total Scanned",
-      value: "0",
-      color: "text-blue-600",
-    },
+      id: "bonus",
+      title: "Exclusive Bonuses",
+      description: "VIP tools and content",
+      subText: "Unlocked",
+      icon: Star,
+      color: "bg-green-600",
+      buttonText: "Start Lessons →",
+      path: "/dashboard/bonus"
+    }
   ]
 
   return (
-    <DashboardLayout activeTab="">
-      <div className="space-y-4 md:space-y-6">
-        <div>
-          {/* 👇 3. Uso do operador ?. para evitar crash se 't' for undefined */}
-          <h1 className="text-2xl md:text-3xl font-bold text-white">{t?.welcome}</h1>
-          <p className="text-sm md:text-base text-gray-400 mt-2">{t?.selectFeature}</p>
+    <DashboardLayout activeTab="home">
+      <div className="space-y-6 max-w-7xl mx-auto pb-10">
+        
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-2">Welcome to the Members Area</h1>
+          <p className="text-zinc-300">
+            Access complete lessons on advanced digital monitoring with TiSpy
+          </p>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-          {stats.map((stat) => {
-            const Icon = stat.icon
+        {/* Grelha de Módulos (Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {modules.map((mod) => {
+            const Icon = mod.icon
             return (
-              <div key={stat.label} className="bg-card rounded-lg border border-border shadow-sm p-4 md:p-6">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="min-w-0">
-                    <p className="text-xs md:text-sm text-gray-400">{stat.label}</p>
-                    <p className="text-xl md:text-2xl font-bold text-white mt-1">{stat.value}</p>
+              <div key={mod.id} className="bg-[#0f0f12] border border-white/5 rounded-xl overflow-hidden flex flex-col">
+                {/* Header colorido do Card */}
+                <div className={`${mod.color} h-32 flex items-center justify-center`}>
+                  <Icon className="w-12 h-12 text-white" strokeWidth={2} />
+                </div>
+                
+                {/* Conteúdo do Card */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <h2 className="text-xl font-bold text-white mb-2">{mod.title}</h2>
+                  <p className="text-sm text-zinc-300 mb-4">{mod.description}</p>
+                  
+                  <div className="mt-auto">
+                    <p className="text-xs text-zinc-400 mb-4">{mod.subText}</p>
+                    <Link 
+                      href={mod.path}
+                      className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
+                    >
+                      {mod.buttonText}
+                    </Link>
                   </div>
-                  <Icon className={`w-8 md:w-10 h-8 md:h-10 ${stat.color} opacity-20 flex-shrink-0`} />
                 </div>
               </div>
             )
           })}
         </div>
 
-        {/* Welcome Card */}
-        <div className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg shadow-lg p-6 md:p-8">
-          <h2 className="text-xl md:text-2xl font-bold mb-2">Start Scanning</h2>
-          <p className="text-sm md:text-base opacity-90">
-            Select a scanner from the sidebar to begin analyzing profiles. Each scanner provides detailed insights and
-            information.
-          </p>
+        {/* Stats Panel */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+          <div className="bg-[#0f0f12] border border-white/5 rounded-xl p-6">
+            <p className="text-sm text-zinc-300 mb-4">Available Lessons</p>
+            <p className="text-3xl font-bold text-white">{dynamicLessons}</p>
+          </div>
+          <div className="bg-[#0f0f12] border border-white/5 rounded-xl p-6">
+            <p className="text-sm text-zinc-300 mb-4">Categories</p>
+            <p className="text-3xl font-bold text-white">{dynamicCategories}</p>
+          </div>
+          <div className="bg-[#0f0f12] border border-white/5 rounded-xl p-6">
+            <p className="text-sm text-zinc-300 mb-4">Premium Access</p>
+            <div className="text-white">
+              <Check className="w-8 h-8" />
+            </div>
+          </div>
         </div>
+
+        {/* Info Box */}
+        <div className="mt-8 bg-[#0f0f12] border border-white/5 rounded-xl p-6 md:p-8">
+          <h2 className="text-xl font-bold text-white mb-4">About the Platform</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-zinc-400">
+            <ul className="space-y-3">
+              <li className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                24/7 Unlimited Access
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                Official Training
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                Priority Support
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </DashboardLayout>
   )
-}
+
