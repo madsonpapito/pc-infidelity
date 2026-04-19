@@ -680,9 +680,11 @@ function DatingAppScannerContent() {
 
         {/* Info Card - Apenas no passo 1 */}
         {step === 1 && (
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
+          <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-6">
             <div className="flex gap-4">
-              <div className="text-purple-600 flex-shrink-0 text-2xl">❤️</div>
+              <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 text-xl">
+                ❤️
+              </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-1">Deep Scan Technology</h3>
                 <p className="text-sm text-muted-foreground">

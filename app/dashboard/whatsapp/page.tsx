@@ -862,15 +862,15 @@ export default function WhatsAppScannerPage() {
             </div>
 
             {/* Rodapé com Timer */}
-            <div className="mt-8 pt-4 border-t border-gray-100 flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-green-700 font-medium opacity-80 text-center">
+            <div className="mt-8 pt-4 border-t border-border flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-green-400 font-medium opacity-80 text-center">
                 <div className="flex items-center gap-2">
                     <Clock size={12} className="animate-pulse" />
                     <span>Next automatic system update in:</span>
                 </div>
-                <span className="text-green-800 font-bold bg-green-100 px-2 py-0.5 rounded">
+                <span className="text-green-400 font-bold bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
                     {countdownString}
                 </span>
-                <span className="text-[10px] text-gray-400 normal-case mt-1">(7-day update cycle)</span>
+                <span className="text-[10px] text-muted-foreground normal-case mt-1">(7-day update cycle)</span>
             </div>
 
             {/* Popup Chat */}
@@ -898,10 +898,10 @@ export default function WhatsAppScannerPage() {
                 </FeatureCard>
 
                 {step === 1 && (
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-6">
                         <div className="flex gap-4">
-                            <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                                <MessageCircle className="text-green-600" size={24} />
+                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                                <MessageCircle className="text-green-500" size={24} />
                             </div>
                             <div>
                                 <h3 className="font-semibold text-foreground mb-1">Encrypted Analysis</h3>
