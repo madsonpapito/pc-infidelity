@@ -10,7 +10,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
   const userName = user?.username || "Madson Papito"
 
   return (
-    <header className="bg-[#0f0f12] border-b border-white/5 sticky top-0 z-20">
+    <header className="bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-20">
       <div className="flex items-center justify-between px-4 md:px-6 py-3 md:py-4">
         {/* Left side - Menu button (Mobile only) */}
         <div className="flex items-center md:hidden">
