@@ -17,12 +17,21 @@ interface LessonListProps {
   categoryTitle: string
 }
 
-export default function LessonList({ lessons, categoryTitle }: LessonListProps) {
+  // Deduplicate lessons by title to prevent repeated sections if database has duplicates
+  const uniqueLessons = lessons.reduce((acc: Lesson[], current) => {
+    const x = acc.find(item => item.title === current.title);
+    if (!x) {
+      return acc.concat([current]);
+    } else {
+      return acc;
+    }
+  }, []);
+
   const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(
-    lessons.length > 0 ? lessons[0] : null
+    uniqueLessons.length > 0 ? uniqueLessons[0] : null
   )
 
-  if (lessons.length === 0) {
+  if (uniqueLessons.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
         <PlayCircle className="w-16 h-16 text-muted-foreground mb-4" />
@@ -69,7 +78,7 @@ export default function LessonList({ lessons, categoryTitle }: LessonListProps) 
             {categoryTitle}
           </h3>
           <div className="space-y-2">
-            {lessons.sort((a, b) => (Number(a.id) || 0) - (Number(b.id) || 0)).map((lesson, index) => {
+            {uniqueLessons.sort((a, b) => (Number(a.id) || 0) - (Number(b.id) || 0)).map((lesson, index) => {
               const isActive = selectedLesson?.id === lesson.id
               return (
                 <button
