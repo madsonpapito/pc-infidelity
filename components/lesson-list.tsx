@@ -16,7 +16,7 @@ interface LessonListProps {
   lessons: Lesson[]
   categoryTitle: string
 }
-
+export default function LessonList({ lessons, categoryTitle }: LessonListProps) {
   // Deduplicate lessons by title to prevent repeated sections if database has duplicates
   const uniqueLessons = lessons.reduce((acc: Lesson[], current) => {
     const x = acc.find(item => item.title === current.title);
