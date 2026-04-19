@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useAuth } from "@/lib/auth-context"
-import { Home, BookOpen, Zap, Gift, LogOut, ChevronRight, X } from "lucide-react"
+import { MessageCircle, Camera, Heart, PlayCircle, CheckSquare, Settings, LogOut, X } from "lucide-react"
 
 interface SidebarProps {
   open: boolean
@@ -17,11 +17,16 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
   const userName = "Madson Papito"
   const userEmail = "madsonpapito@gmail.com"
 
-  const menuItems = [
+  const scannerItems = [
+    { id: "whatsapp", label: "Whatsapp Scanner", icon: MessageCircle, path: "/dashboard/whatsapp" },
+    { id: "instagram", label: "Instagram Scanner", icon: Camera, path: "/dashboard/instagram" },
+    { id: "dating", label: "Dating Scanner", icon: Heart, path: "/dashboard/dating" },
+  ]
+
+  const advancedItems = [
     { id: "intro", label: "Start Here", icon: PlayCircle, path: "/dashboard" },
     { id: "tutorial", label: "Installation Tutorial", icon: CheckSquare, path: "/dashboard/tutorial" },
     { id: "advanced", label: "Advanced Panel", icon: Settings, path: "/dashboard/scanners" },
-    { id: "bonus", label: "Bonus Tools", icon: Star, path: "/dashboard/bonus" },
   ]
 
   return (
@@ -42,27 +47,62 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
       </div>
 
       {/* Menu Items */}
-      <nav className="flex-1 overflow-y-auto px-4 py-8 space-y-2">
-        {menuItems.map((item) => {
-          const Icon = item.icon
-          const isActive = activeTab === item.id || (activeTab === "" && item.id === "home")
+      <nav className="flex-1 overflow-y-auto px-4 py-8 space-y-6">
+        
+        {/* Category: Scanner */}
+        <div>
+          <h3 className="px-3 text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Scanner</h3>
+          <div className="space-y-1">
+            {scannerItems.map((item) => {
+              const Icon = item.icon
+              const isActive = activeTab === item.id
 
-          return (
-            <Link
-              key={item.id}
-              href={item.path}
-              onClick={onToggle}
-              className={`flex items-center gap-3 px-3 py-3 rounded-lg transition-all text-sm font-medium ${
-                isActive 
-                  ? "bg-white/10 text-white" 
-                  : "text-zinc-300 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-zinc-400"}`} />
-              <span>{item.label}</span>
-            </Link>
-          )
-        })}
+              return (
+                <Link
+                  key={item.id}
+                  href={item.path}
+                  onClick={onToggle}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm font-medium ${
+                    isActive 
+                      ? "bg-white/10 text-white" 
+                      : "text-zinc-300 hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-zinc-400"}`} />
+                  <span>{item.label}</span>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Category: Espionagem Avançada */}
+        <div>
+          <h3 className="px-3 text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Espionagem Avançada</h3>
+          <div className="space-y-1">
+            {advancedItems.map((item) => {
+              const Icon = item.icon
+              const isActive = activeTab === item.id || (activeTab === "" && item.id === "intro")
+
+              return (
+                <Link
+                  key={item.id}
+                  href={item.path}
+                  onClick={onToggle}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm font-medium ${
+                    isActive 
+                      ? "bg-white/10 text-white" 
+                      : "text-zinc-300 hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-zinc-400"}`} />
+                  <span>{item.label}</span>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+
       </nav>
 
       {/* User Profile Footer */}
