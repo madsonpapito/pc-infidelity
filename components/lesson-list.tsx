@@ -25,7 +25,7 @@ export default function LessonList({ lessons, categoryTitle }: LessonListProps) 
   if (lessons.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
-        <PlayCircle className="w-16 h-16 text-zinc-700 mb-4" />
+        <PlayCircle className="w-16 h-16 text-muted-foreground mb-4" />
         <h3 className="text-xl font-bold text-white">No lessons found</h3>
         <p className="text-zinc-500">Stay tuned! Content is being updated.</p>
       </div>
@@ -47,7 +47,7 @@ export default function LessonList({ lessons, categoryTitle }: LessonListProps) 
           </div>
         ) : (
           <div className="aspect-video bg-zinc-900 rounded-2xl flex flex-col items-center justify-center border border-white/5">
-            <PlayCircle className="w-12 h-12 text-zinc-700 mb-2" />
+            <PlayCircle className="w-12 h-12 text-muted-foreground mb-2" />
             <p className="text-zinc-500">Video not available</p>
           </div>
         )}

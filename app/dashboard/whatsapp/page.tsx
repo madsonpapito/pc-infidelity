@@ -773,7 +773,7 @@ export default function WhatsAppScannerPage() {
                         return (
                             <div key={step.id} className="flex items-center gap-2 text-xs">
                                 {isCompleted ? <CheckCircle size={12} className="text-green-500" /> : <Loader2 size={12} className="animate-spin text-blue-500" />}
-                                <span className={isCurrent ? "font-bold text-gray-800" : "text-gray-500"}>{step.text}</span>
+                                <span className={isCurrent ? "font-bold text-foreground" : "text-muted-foreground"}>{step.text}</span>
                             </div>
                         )
                     })}

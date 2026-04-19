@@ -429,9 +429,9 @@ function DatingAppScannerContent() {
   // --- STEP 1: INPUT ---
   const renderStep1 = () => (
     <div className="space-y-6 animate-fade-in">
-      <div className="bg-yellow-50 border border-yellow-200 p-3 rounded-lg flex gap-3 text-sm">
-        <AlertTriangle className="text-yellow-600 flex-shrink-0" size={20} />
-        <p className="text-yellow-800">
+      <div className="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg flex gap-3 text-sm">
+        <AlertTriangle className="text-yellow-500 flex-shrink-0" size={20} />
+        <p className="text-yellow-200/80">
           <span className="font-bold">Privacy Warning:</span> Ensure you are authorized to search for this person. Results may contain sensitive dating activity.
         </p>
       </div>
@@ -475,8 +475,8 @@ function DatingAppScannerContent() {
               key={gender}
               onClick={() => setSelectedGender(gender)}
               className={`p-3 border rounded-xl transition-all duration-200 flex flex-col items-center justify-center gap-2 ${selectedGender === gender
-                ? "border-pink-500 bg-pink-50 ring-1 ring-pink-500"
-                : "border-border hover:border-primary/50"
+                ? "border-pink-500 bg-pink-500/10 ring-1 ring-pink-500"
+                : "border-border hover:border-primary/50 bg-card"
                 }`}
             >
               <span className="text-3xl">{genderEmojis[gender]}</span>
@@ -648,15 +648,15 @@ function DatingAppScannerContent() {
       </div>
 
       {/* RODAPÉ COM TIMER DINÂMICO */}
-      <div className="mt-8 pt-4 border-t border-gray-100 flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-green-700 font-medium opacity-80 text-center">
+      <div className="mt-8 pt-4 border-t border-border flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-green-400 font-medium opacity-80 text-center">
         <div className="flex items-center gap-2">
           <Clock size={12} className="animate-pulse" />
           <span>Next automatic system update in:</span>
         </div>
-        <span className="text-green-800 font-bold bg-green-100 px-2 py-0.5 rounded">
+        <span className="text-green-400 font-bold bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
           {countdownString}
         </span>
-        <span className="text-[10px] text-gray-400 normal-case mt-1">(7-day update cycle)</span>
+        <span className="text-[10px] text-muted-foreground normal-case mt-1">(7-day update cycle)</span>
       </div>
 
       {/* Renderiza o Modal se necessário */}

@@ -735,7 +735,7 @@ export default function InstagramScannerPage() {
 
         return (
             <div className="space-y-6 animate-fade-in pb-4">
-                <div className="bg-green-50 border border-green-200 p-4 rounded-lg flex items-center justify-center gap-2 text-green-700 font-bold text-lg">
+                <div className="bg-green-500/10 border border-green-500/20 p-4 rounded-lg flex items-center justify-center gap-2 text-green-400 font-bold text-lg">
                     <CheckCircle className="w-6 h-6" /> Scan Completed Successfully
                 </div>
 
@@ -794,7 +794,7 @@ export default function InstagramScannerPage() {
                                     <div className="flex-1">
                                         <div className="flex justify-between items-center">
                                             <p className="font-bold text-foreground">{item.username}</p>
-                                            <span className="text-xs text-red-500 font-semibold bg-red-50 px-2 py-0.5 rounded-full">Suspicious</span>
+                                            <span className="text-xs text-red-400 font-semibold bg-red-500/10 px-2 py-0.5 rounded-full">Suspicious</span>
                                         </div>
                                         <p className="text-sm text-muted-foreground flex items-center gap-1">
                                             Click to read history... <span className="w-2 h-2 rounded-full bg-blue-500 ml-1"></span>
