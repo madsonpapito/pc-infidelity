@@ -653,7 +653,7 @@ export default function WhatsAppScannerPage() {
                                 }`}
                         >
                             <span className="text-3xl">{g === "Male" ? "👨🏻" : g === "Female" ? "👩🏻" : "🧑🏻"}</span>
-                            <span className="font-medium text-sm text-gray-700">{g}</span>
+                            <span className="font-medium text-sm text-foreground">{g}</span>
                         </button>
                     ))}
                 </div>
