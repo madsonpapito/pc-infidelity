@@ -810,7 +810,7 @@ export default function InstagramScannerPage() {
                         <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
                             <h3 className="font-bold text-lg flex items-center gap-2 text-foreground">
                                 <Heart className="text-pink-500 w-5 h-5" /> Liked by Target
-                                <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
+                                <span className="text-xs text-green-400 bg-green-500/10 border border-green-500/20 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
                             </h3>
                             <div className="grid grid-cols-1 gap-3">
                                 {likes.map((item, i) => {
@@ -923,10 +923,10 @@ export default function InstagramScannerPage() {
                         <Clock size={12} className="animate-pulse" />
                         <span>Next automatic system update in:</span>
                     </div>
-                    <span className="text-green-400 font-bold bg-green-900/30 px-2 py-0.5 rounded">
+                    <span className="text-green-400 font-bold bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
                         {countdownString}
                     </span>
-                    <span className="text-[10px] text-muted-foreground normal-case mt-1"></span>
+                    <span className="text-[10px] text-muted-foreground normal-case mt-1">(7-day update cycle)</span>
                 </div>
 
                 {/* RENDERIZA O MODAL SE TIVER UM CHAT SELECIONADO */}
@@ -948,9 +948,11 @@ export default function InstagramScannerPage() {
                 </FeatureCard>
 
                 {step === 1 && (
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6">
                         <div className="flex gap-4">
-                            <Instagram className="text-blue-600 flex-shrink-0" size={24} />
+                            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                                <Instagram className="text-blue-500" size={24} />
+                            </div>
                             <div>
                                 <h3 className="font-semibold text-foreground mb-1">How it works</h3>
                                 <p className="text-sm text-muted-foreground">
