@@ -28,7 +28,7 @@ export default async function DashboardPage() {
       icon: PlayCircle,
       color: "bg-blue-600",
       buttonText: "Start Lessons →",
-      path: "/dashboard"
+      path: "/dashboard/intro"
     },
     {
       id: "tutorial",
@@ -79,7 +79,7 @@ export default async function DashboardPage() {
           {modules.map((mod) => {
             const Icon = mod.icon
             return (
-              <div key={mod.id} className="bg-[#0f0f12] border border-white/5 rounded-xl overflow-hidden flex flex-col">
+              <div key={mod.id} className="bg-card border border-border rounded-xl overflow-hidden flex flex-col shadow-sm">
                 {/* Header colorido do Card */}
                 <div className={`${mod.color} h-32 flex items-center justify-center`}>
                   <Icon className="w-12 h-12 text-white" strokeWidth={2} />
@@ -105,18 +105,17 @@ export default async function DashboardPage() {
           })}
         </div>
 
-        {/* Stats Panel */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-          <div className="bg-[#0f0f12] border border-white/5 rounded-xl p-6">
-            <p className="text-sm text-zinc-300 mb-4">Available Lessons</p>
+          <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
+            <p className="text-sm text-muted-foreground mb-4">Available Lessons</p>
             <p className="text-3xl font-bold text-white">{dynamicLessons}</p>
           </div>
-          <div className="bg-[#0f0f12] border border-white/5 rounded-xl p-6">
-            <p className="text-sm text-zinc-300 mb-4">Categories</p>
+          <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
+            <p className="text-sm text-muted-foreground mb-4">Categories</p>
             <p className="text-3xl font-bold text-white">{dynamicCategories}</p>
           </div>
-          <div className="bg-[#0f0f12] border border-white/5 rounded-xl p-6">
-            <p className="text-sm text-zinc-300 mb-4">Premium Access</p>
+          <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
+            <p className="text-sm text-muted-foreground mb-4">Premium Access</p>
             <div className="text-white">
               <Check className="w-8 h-8" />
             </div>
@@ -124,7 +123,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Info Box */}
-        <div className="mt-8 bg-[#0f0f12] border border-white/5 rounded-xl p-6 md:p-8">
+        <div className="mt-8 bg-card border border-border rounded-xl p-6 md:p-8 shadow-sm">
           <h2 className="text-xl font-bold text-white mb-4">About the Platform</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-zinc-400">
             <ul className="space-y-3">

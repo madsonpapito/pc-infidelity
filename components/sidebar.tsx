@@ -17,6 +17,8 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
   const userName = "Madson Papito"
   const userEmail = "madsonpapito@gmail.com"
 
+  const homeItem = { id: "home", label: "Home", icon: PlayCircle, path: "/dashboard" }
+
   const scannerItems = [
     { id: "whatsapp", label: "Whatsapp Scanner", icon: MessageCircle, path: "/dashboard/whatsapp" },
     { id: "instagram", label: "Instagram Scanner", icon: Camera, path: "/dashboard/instagram" },
@@ -24,7 +26,7 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
   ]
 
   const advancedItems = [
-    { id: "intro", label: "Start Here", icon: PlayCircle, path: "/dashboard" },
+    { id: "intro", label: "Start Here", icon: PlayCircle, path: "/dashboard/intro" },
     { id: "tutorial", label: "Installation Tutorial", icon: CheckSquare, path: "/dashboard/tutorial" },
     { id: "advanced", label: "Advanced Panel", icon: Settings, path: "/dashboard/scanners" },
   ]
@@ -49,7 +51,23 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
       {/* Menu Items */}
       <nav className="flex-1 overflow-y-auto px-4 py-8 space-y-6">
         
-        {/* Category: Scanner */}
+        {/* Category: General */}
+        <div>
+          <div className="space-y-1">
+            <Link
+              href={homeItem.path}
+              onClick={onToggle}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm font-medium ${
+                activeTab === homeItem.id 
+                  ? "bg-white/10 text-white" 
+                  : "text-zinc-300 hover:bg-white/5 hover:text-white"
+              }`}
+            >
+              <homeItem.icon className={`w-5 h-5 ${activeTab === homeItem.id ? "text-white" : "text-zinc-400"}`} />
+              <span>{homeItem.label}</span>
+            </Link>
+          </div>
+        </div>
         <div>
           <h3 className="px-3 text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Scanner</h3>
           <div className="space-y-1">
