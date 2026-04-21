@@ -221,19 +221,19 @@ const ChatPopup = ({ onClose, profilePhoto, conversationData, conversationName }
     }, [])
 
     return (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in zoom-in-95 duration-200" onClick={onClose}>
-            <div className="relative bg-[#efe7dd] rounded-lg shadow-2xl max-w-sm w-full overflow-hidden flex flex-col h-[600px] border border-gray-800/10" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in zoom-in-95 duration-200" onClick={onClose}>
+            <div className="relative bg-[#0B141A] rounded-lg shadow-2xl max-w-sm w-full overflow-hidden flex flex-col h-[600px] border border-[#202C33]" onClick={(e) => e.stopPropagation()}>
                 {/* Header */}
-                <div className="bg-[#008069] text-white p-3 flex items-center gap-3 shadow-md z-10">
-                    <button onClick={onClose} className="p-1 rounded-full hover:bg-white/20 transition-colors"><X className="h-5 w-5" /></button>
-                    <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-gray-300 border border-white/30">
+                <div className="bg-[#202C33] text-[#E9EDEF] p-3 flex items-center gap-3 shadow-md z-10">
+                    <button onClick={onClose} className="p-1 rounded-full hover:bg-white/10 transition-colors"><X className="h-5 w-5" /></button>
+                    <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-gray-600 border border-white/10">
                         <img src={profilePhoto || "/placeholder.svg"} alt="Profile" className="object-cover h-full w-full" />
                     </div>
                     <div className="flex flex-col flex-1 min-w-0">
                         <span className="font-semibold text-sm leading-tight truncate">{conversationName}</span>
-                        <span className="text-xs opacity-80">online</span>
+                        <span className="text-xs text-emerald-400">online</span>
                     </div>
-                    <div className="flex gap-4 text-white/90">
+                    <div className="flex gap-4 text-[#E9EDEF]/80">
                         <Video size={22} />
                         <Phone size={20} />
                         <MoreVertical size={20} />
@@ -241,61 +241,66 @@ const ChatPopup = ({ onClose, profilePhoto, conversationData, conversationName }
                 </div>
 
                 {/* Messages Body */}
-                <div className="flex-1 p-4 space-y-2 overflow-y-auto bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')] bg-repeat">
-                    {conversationData.map((msg: any, index: number) => (
-                        msg.type === "dateSeparator" ? (
-                            // Date Separator
-                            <div key={index} className="flex justify-center my-3">
-                                <span className="bg-[#e1f3fb] text-[#54656f] text-[11px] px-3 py-1 rounded-lg shadow-sm font-medium">
-                                    {msg.content}
-                                </span>
-                            </div>
-                        ) : msg.type === "incoming" ? (
-                            <div key={index} className="flex justify-start mb-1">
-                                <div className="bg-card border border-border rounded-lg rounded-tl-none p-2 px-2 max-w-[85%] shadow-sm relative">
-                                    {/* Lógica para Imagem ou Texto */}
-                                    {msg.image ? (
-                                        <div className="mb-1 rounded-lg overflow-hidden border border-border">
-                                            <img src={msg.image} alt="Photo" className="w-full h-auto object-cover" />
-                                        </div>
-                                    ) : (
-                                        <p className={`text-[14px] text-foreground leading-snug px-1 pt-1`}>
-                                            {msg.content}
-                                        </p>
-                                    )}
-                                    <span className="text-[10px] text-muted-foreground float-right mt-0.5 ml-2 select-none">{msg.time}</span>
+                <div className="flex-1 p-4 space-y-2 overflow-y-auto bg-[#0B141A] relative">
+                    {/* Dark mode WA background pattern overlay */}
+                    <div className="absolute inset-0 opacity-[0.06] bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')] bg-repeat pointer-events-none" />
+                    
+                    <div className="relative z-10 space-y-2">
+                        {conversationData.map((msg: any, index: number) => (
+                            msg.type === "dateSeparator" ? (
+                                // Date Separator
+                                <div key={index} className="flex justify-center my-3">
+                                    <span className="bg-[#182229] text-[#8696A0] text-[11px] px-3 py-1 rounded-lg shadow-sm font-medium">
+                                        {msg.content}
+                                    </span>
                                 </div>
-                            </div>
-                        ) : (
-                            <div key={index} className="flex justify-end mb-1">
-                                <div className="bg-primary/20 border border-primary/30 rounded-lg rounded-tr-none p-2 px-2 max-w-[85%] shadow-sm relative text-foreground">
-                                    {/* Lógica para Imagem ou Texto (Outgoing) */}
-                                    {msg.image ? (
-                                        <div className="mb-1 rounded-lg overflow-hidden border border-primary/50">
-                                            <img src={msg.image} alt="Photo" className="w-full h-auto object-cover" />
-                                        </div>
-                                    ) : (
-                                        <p className={`text-[14px] text-foreground leading-snug px-1 pt-1`}>
-                                            {msg.content}
-                                        </p>
-                                    )}
-                                    <div className="flex items-center justify-end gap-1 mt-0.5 select-none">
-                                        <span className="text-[10px] text-primary/70">{msg.time}</span>
-                                        <CheckCheck className="h-3.5 w-3.5 text-primary" />
+                            ) : msg.type === "incoming" ? (
+                                <div key={index} className="flex justify-start mb-1">
+                                    <div className="bg-[#202C33] rounded-lg rounded-tl-none p-2 px-2 max-w-[85%] shadow-sm relative text-[#E9EDEF]">
+                                        {/* Lógica para Imagem ou Texto */}
+                                        {msg.image ? (
+                                            <div className="mb-1 rounded-lg overflow-hidden">
+                                                <img src={msg.image} alt="Photo" className="w-full h-auto object-cover" />
+                                            </div>
+                                        ) : (
+                                            <p className={`text-[14px] leading-snug px-1 pt-1`}>
+                                                {msg.content}
+                                            </p>
+                                        )}
+                                        <span className="text-[10px] text-[#8696A0] float-right mt-0.5 ml-2 select-none">{msg.time}</span>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    ))}
-                    <div ref={chatEndRef} />
+                            ) : (
+                                <div key={index} className="flex justify-end mb-1">
+                                    <div className="bg-[#005C4B] rounded-lg rounded-tr-none p-2 px-2 max-w-[85%] shadow-sm relative text-[#E9EDEF]">
+                                        {/* Lógica para Imagem ou Texto (Outgoing) */}
+                                        {msg.image ? (
+                                            <div className="mb-1 rounded-lg overflow-hidden">
+                                                <img src={msg.image} alt="Photo" className="w-full h-auto object-cover" />
+                                            </div>
+                                        ) : (
+                                            <p className={`text-[14px] leading-snug px-1 pt-1`}>
+                                                {msg.content}
+                                            </p>
+                                        )}
+                                        <div className="flex items-center justify-end gap-1 mt-0.5 select-none">
+                                            <span className="text-[10px] text-[#8696A0]">{msg.time}</span>
+                                            <CheckCheck className="h-3.5 w-3.5 text-[#53bdeb]" />
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        ))}
+                        <div ref={chatEndRef} />
+                    </div>
                 </div>
 
                 {/* Footer Fake Input */}
-                <div className="bg-secondary border-t border-border p-2 flex items-center gap-2 z-10">
-                    <div className="flex-1 bg-card border border-border rounded-full h-10 px-4 flex items-center text-muted-foreground text-sm shadow-sm cursor-not-allowed">
+                <div className="bg-[#202C33] p-2 flex items-center gap-2 z-10">
+                    <div className="flex-1 bg-[#2A3942] rounded-full h-10 px-4 flex items-center text-[#8696A0] text-sm shadow-sm cursor-not-allowed">
                         Type a message
                     </div>
-                    <div className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-full flex items-center justify-center text-primary shadow-sm border border-primary/50">
+                    <div className="w-10 h-10 bg-[#00A884] rounded-full flex items-center justify-center text-white shadow-sm hover:bg-[#00A884]/80">
                         <MessageCircle size={20} />
                     </div>
                 </div>
