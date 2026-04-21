@@ -578,10 +578,10 @@ export default function InstagramScannerPage() {
         const messages = selectedChat.chatHistory || []
 
         return (
-            <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 animate-in fade-in">
-                <div className="bg-card rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl flex flex-col h-[500px]">
+            <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-in fade-in">
+                <div className="bg-card border border-border rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl flex flex-col h-[500px]">
                     {/* Header */}
-                    <div className="bg-muted border-b border-border p-4 flex items-center justify-between">
+                    <div className="bg-secondary/50 border-b border-border p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                             <img src={selectedChat.image} className="w-10 h-10 rounded-full border border-gray-200" />
                             <div>
@@ -598,12 +598,12 @@ export default function InstagramScannerPage() {
 
                     {/* Chat Body */}
                     <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-background">
-                        <p className="text-xs text-center text-gray-400 my-2">Today, 2:30 AM</p>
+                        <p className="text-xs text-center text-muted-foreground my-2">Today, 2:30 AM</p>
                         {messages.map((msg: any, i: number) => (
                             <div key={i} className={`flex ${msg.sender === "me" ? "justify-end" : "justify-start"}`}>
                                 <div className={`max-w-[80%] px-4 py-2 rounded-2xl text-sm ${msg.sender === "me"
-                                    ? "bg-blue-500 text-white rounded-br-none"
-                                    : "bg-muted border border-border text-foreground rounded-bl-none shadow-sm"
+                                    ? "bg-primary text-primary-foreground rounded-br-none"
+                                    : "bg-card border border-border text-foreground rounded-bl-none shadow-sm"
                                     }`}>
                                     {msg.text}
                                 </div>
@@ -613,7 +613,7 @@ export default function InstagramScannerPage() {
 
                     {/* Footer Input */}
                     <div className="p-3 bg-card border-t border-border flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                        <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground">
                             <div className="w-4 h-4 border-2 border-current rounded-full" />
                         </div>
                         <input
@@ -641,7 +641,7 @@ export default function InstagramScannerPage() {
                             key={g}
                             onClick={() => setSelectedGender(g)}
                             className={`p-4 rounded-xl border-2 flex flex-col items-center justify-center space-y-2 transition-all hover:scale-105 ${selectedGender === g
-                                ? "border-primary bg-primary/5 shadow-md"
+                                ? "border-primary bg-primary/10 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
                                 : "border-border bg-card hover:border-primary/50"
                                 }`}
                         >
@@ -688,12 +688,12 @@ export default function InstagramScannerPage() {
 
     // PASSO 2: LOADING / SCANNING
     const renderStep2 = () => (
-        <div className="space-y-6 animate-fade-in">
-            <h2 className="text-xl font-bold text-center">Analyzing @{instagramHandle}...</h2>
+        <div className="space-y-6 animate-fade-in relative">
+            <h2 className="text-xl font-bold text-center text-primary animate-pulse">Bypassing Security: @{instagramHandle}...</h2>
             <ProfileCard />
             <div className="space-y-2">
-                <div className="flex justify-between text-xs font-mono text-muted-foreground">
-                    <span>SCANNING DATABASE...</span>
+                <div className="flex justify-between text-xs font-mono text-primary">
+                    <span className="animate-pulse">DECRYPTING CLOUD BACKUPS...</span>
                     <span>{Math.floor(loadingProgress)}%</span>
                 </div>
                 <div className="w-full bg-secondary rounded-full h-3 overflow-hidden">
@@ -735,38 +735,38 @@ export default function InstagramScannerPage() {
 
         return (
             <div className="space-y-6 animate-fade-in pb-4">
-                <div className="bg-green-500/10 border border-green-500/20 p-4 rounded-lg flex items-center justify-center gap-2 text-green-400 font-bold text-lg">
+                <div className="bg-green-50 border border-green-200 p-4 rounded-lg flex items-center justify-center gap-2 text-green-700 font-bold text-lg">
                     <CheckCircle className="w-6 h-6" /> Scan Completed Successfully
                 </div>
 
                 <ProfileCard />
 
                 {/* --- TABS DE NAVEGAÇÃO --- */}
-                <div className="flex p-1 bg-muted rounded-xl overflow-x-auto no-scrollbar">
+                <div className="flex p-1 bg-secondary rounded-xl overflow-x-auto no-scrollbar border border-border">
                     <button
                         onClick={() => setResultTab("messages")}
-                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "messages" ? "bg-card text-blue-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
+                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "messages" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
                             }`}
                     >
                         <MessageCircle size={18} /> Directs
                     </button>
                     <button
                         onClick={() => setResultTab("likes")}
-                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "likes" ? "bg-card text-pink-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
+                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "likes" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
                             }`}
                     >
                         <Heart size={18} /> Likes
                     </button>
                     <button
                         onClick={() => setResultTab("comments")}
-                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "comments" ? "bg-card text-orange-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
+                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "comments" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
                             }`}
                     >
                         <MessageSquare size={18} /> Comments
                     </button>
                     <button
                         onClick={() => setResultTab("saved")}
-                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "saved" ? "bg-card text-purple-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
+                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "saved" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
                             }`}
                     >
                         <Bookmark size={18} /> Saved
@@ -779,25 +779,25 @@ export default function InstagramScannerPage() {
                     {/* 1. ABA DE MENSAGENS (3 PERFIS + POPUP) */}
                     {resultTab === "messages" && (
                         <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
-                            <h3 className="font-bold text-lg flex items-center gap-2 text-foreground">
+                            <h3 className="font-bold text-lg flex items-center gap-2 text-gray-800">
                                 <MessageCircle className="text-blue-500 w-5 h-5" /> Recent Direct Messages
                             </h3>
-                            <p className="text-sm text-muted-foreground mb-2">Click on a profile to view intercepted chat.</p>
+                            <p className="text-sm text-gray-500 mb-2">Click on a profile to view intercepted chat.</p>
 
                             {messages.map((item, i) => (
                                 <div
                                     key={i}
                                     onClick={() => setSelectedChat(item)}
-                                    className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group hover:border-blue-400"
+                                    className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md hover:shadow-primary/20 transition-all cursor-pointer group hover:border-primary/50"
                                 >
-                                    <img src={item.image} alt="user" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm group-hover:scale-105 transition-transform" />
+                                    <img src={item.image} alt="user" className="w-12 h-12 rounded-full object-cover border-2 border-border shadow-sm group-hover:scale-105 transition-transform" />
                                     <div className="flex-1">
                                         <div className="flex justify-between items-center">
                                             <p className="font-bold text-foreground">{item.username}</p>
-                                            <span className="text-xs text-red-400 font-semibold bg-red-500/10 px-2 py-0.5 rounded-full">Suspicious</span>
+                                            <span className="text-xs text-primary font-bold bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full animate-pulse">FLAGGED</span>
                                         </div>
                                         <p className="text-sm text-muted-foreground flex items-center gap-1">
-                                            Click to read history... <span className="w-2 h-2 rounded-full bg-blue-500 ml-1"></span>
+                                            Click to decrypt history... <span className="w-2 h-2 rounded-full bg-primary ml-1 animate-pulse"></span>
                                         </p>
                                     </div>
                                 </div>
@@ -808,9 +808,9 @@ export default function InstagramScannerPage() {
                     {/* 2. ABA DE LIKES (Time-based reveal with dynamic timestamps) */}
                     {resultTab === "likes" && (
                         <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
-                            <h3 className="font-bold text-lg flex items-center gap-2 text-foreground">
+                            <h3 className="font-bold text-lg flex items-center gap-2 text-gray-800">
                                 <Heart className="text-pink-500 w-5 h-5" /> Liked by Target
-                                <span className="text-xs text-green-400 bg-green-500/10 border border-green-500/20 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
+                                <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
                             </h3>
                             <div className="grid grid-cols-1 gap-3">
                                 {likes.map((item, i) => {
@@ -848,7 +848,7 @@ export default function InstagramScannerPage() {
                                                 <p className="text-foreground">
                                                     Liked <b>{item.username}'s</b> photo
                                                 </p>
-                                                <p className={`text-xs ${i < 3 ? 'text-green-500 font-medium' : 'text-muted-foreground'}`}>
+                                                <p className={`text-xs ${i < 3 ? 'text-primary font-medium' : 'text-muted-foreground'}`}>
                                                     {i < 3 && <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1 animate-pulse"></span>}
                                                     {getTimeAgo(i)}
                                                 </p>
@@ -918,15 +918,15 @@ export default function InstagramScannerPage() {
                 </div>
 
                 {/* RODAPÉ COM AVISO DE ATUALIZAÇÃO E TIMER DINÂMICO */}
-                <div className="mt-8 pt-4 border-t border-border flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-green-500 font-medium opacity-80 text-center">
+                <div className="mt-8 pt-4 border-t border-gray-100 flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-green-700 font-medium opacity-80 text-center">
                     <div className="flex items-center gap-2">
                         <Clock size={12} className="animate-pulse" />
                         <span>Next automatic system update in:</span>
                     </div>
-                    <span className="text-green-400 font-bold bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
+                    <span className="text-green-800 font-bold bg-green-100 px-2 py-0.5 rounded">
                         {countdownString}
                     </span>
-                    <span className="text-[10px] text-muted-foreground normal-case mt-1">(7-day update cycle)</span>
+                    <span className="text-[10px] text-gray-400 normal-case mt-1"></span>
                 </div>
 
                 {/* RENDERIZA O MODAL SE TIVER UM CHAT SELECIONADO */}
@@ -948,11 +948,9 @@ export default function InstagramScannerPage() {
                 </FeatureCard>
 
                 {step === 1 && (
-                    <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                         <div className="flex gap-4">
-                            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                                <Instagram className="text-blue-500" size={24} />
-                            </div>
+                            <Instagram className="text-blue-600 flex-shrink-0" size={24} />
                             <div>
                                 <h3 className="font-semibold text-foreground mb-1">How it works</h3>
                                 <p className="text-sm text-muted-foreground">

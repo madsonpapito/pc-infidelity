@@ -252,36 +252,36 @@ const ChatPopup = ({ onClose, profilePhoto, conversationData, conversationName }
                             </div>
                         ) : msg.type === "incoming" ? (
                             <div key={index} className="flex justify-start mb-1">
-                                <div className="bg-white rounded-lg rounded-tl-none p-2 px-2 max-w-[85%] shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
+                                <div className="bg-card border border-border rounded-lg rounded-tl-none p-2 px-2 max-w-[85%] shadow-sm relative">
                                     {/* Lógica para Imagem ou Texto */}
                                     {msg.image ? (
-                                        <div className="mb-1 rounded-lg overflow-hidden">
+                                        <div className="mb-1 rounded-lg overflow-hidden border border-border">
                                             <img src={msg.image} alt="Photo" className="w-full h-auto object-cover" />
                                         </div>
                                     ) : (
-                                        <p className={`text-[14px] text-[#111b21] leading-snug px-1 pt-1`}>
+                                        <p className={`text-[14px] text-foreground leading-snug px-1 pt-1`}>
                                             {msg.content}
                                         </p>
                                     )}
-                                    <span className="text-[10px] text-gray-400 float-right mt-0.5 ml-2 select-none">{msg.time}</span>
+                                    <span className="text-[10px] text-muted-foreground float-right mt-0.5 ml-2 select-none">{msg.time}</span>
                                 </div>
                             </div>
                         ) : (
                             <div key={index} className="flex justify-end mb-1">
-                                <div className="bg-[#d9fdd3] rounded-lg rounded-tr-none p-2 px-2 max-w-[85%] shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
+                                <div className="bg-primary/20 border border-primary/30 rounded-lg rounded-tr-none p-2 px-2 max-w-[85%] shadow-sm relative text-foreground">
                                     {/* Lógica para Imagem ou Texto (Outgoing) */}
                                     {msg.image ? (
-                                        <div className="mb-1 rounded-lg overflow-hidden">
+                                        <div className="mb-1 rounded-lg overflow-hidden border border-primary/50">
                                             <img src={msg.image} alt="Photo" className="w-full h-auto object-cover" />
                                         </div>
                                     ) : (
-                                        <p className={`text-[14px] text-[#111b21] leading-snug px-1 pt-1`}>
+                                        <p className={`text-[14px] text-foreground leading-snug px-1 pt-1`}>
                                             {msg.content}
                                         </p>
                                     )}
                                     <div className="flex items-center justify-end gap-1 mt-0.5 select-none">
-                                        <span className="text-[10px] text-gray-500">{msg.time}</span>
-                                        <CheckCheck className="h-3.5 w-3.5 text-[#53bdeb]" />
+                                        <span className="text-[10px] text-primary/70">{msg.time}</span>
+                                        <CheckCheck className="h-3.5 w-3.5 text-primary" />
                                     </div>
                                 </div>
                             </div>
@@ -291,11 +291,11 @@ const ChatPopup = ({ onClose, profilePhoto, conversationData, conversationName }
                 </div>
 
                 {/* Footer Fake Input */}
-                <div className="bg-[#f0f2f5] p-2 flex items-center gap-2 z-10">
-                    <div className="flex-1 bg-white rounded-full h-10 px-4 flex items-center text-gray-400 text-sm shadow-sm cursor-not-allowed">
+                <div className="bg-secondary border-t border-border p-2 flex items-center gap-2 z-10">
+                    <div className="flex-1 bg-card border border-border rounded-full h-10 px-4 flex items-center text-muted-foreground text-sm shadow-sm cursor-not-allowed">
                         Type a message
                     </div>
-                    <div className="w-10 h-10 bg-[#008069] rounded-full flex items-center justify-center text-white shadow-sm">
+                    <div className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-full flex items-center justify-center text-primary shadow-sm border border-primary/50">
                         <MessageCircle size={20} />
                     </div>
                 </div>
@@ -648,8 +648,8 @@ export default function WhatsAppScannerPage() {
                             key={g}
                             onClick={() => setSelectedGender(g as any)}
                             className={`p-4 rounded-xl border-2 flex flex-col items-center justify-center space-y-2 transition-all hover:scale-105 ${selectedGender === g
-                                ? "border-green-500 bg-green-50 shadow-md"
-                                : "border-border bg-card hover:border-green-400"
+                                ? "border-primary bg-primary/10 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+                                : "border-border bg-card hover:border-primary/50"
                                 }`}
                         >
                             <span className="text-3xl">{g === "Male" ? "👨🏻" : g === "Female" ? "👩🏻" : "🧑🏻"}</span>
@@ -666,11 +666,11 @@ export default function WhatsAppScannerPage() {
                     <div className="relative">
                         <button
                             onClick={() => setShowCountryDropdown(!showCountryDropdown)}
-                            className="flex items-center gap-2 h-12 px-3 border border-border rounded-lg bg-card hover:bg-muted min-w-[100px]"
+                            className="flex items-center gap-2 h-12 px-3 border border-border rounded-lg bg-card hover:bg-secondary/50 min-w-[100px]"
                         >
                             <span className="text-xl">{selectedCountry.flag}</span>
-                            <span className="text-sm font-medium">{selectedCountry.code}</span>
-                            <ChevronDown size={14} className="text-gray-400" />
+                            <span className="text-sm font-medium text-foreground">{selectedCountry.code}</span>
+                            <ChevronDown size={14} className="text-muted-foreground" />
                         </button>
 
                         {showCountryDropdown && (
@@ -687,11 +687,11 @@ export default function WhatsAppScannerPage() {
                                     <button
                                         key={i}
                                         onClick={() => { setSelectedCountry(c); setShowCountryDropdown(false); }}
-                                        className="w-full flex items-center gap-3 px-3 py-2 hover:bg-gray-100 text-left text-sm"
+                                        className="w-full flex items-center gap-3 px-3 py-2 hover:bg-secondary text-left text-sm"
                                     >
                                         <span>{c.flag}</span>
-                                        <span className="truncate flex-1">{c.name}</span>
-                                        <span className="text-gray-400 text-xs">{c.code}</span>
+                                        <span className="truncate flex-1 text-foreground">{c.name}</span>
+                                        <span className="text-muted-foreground text-xs">{c.code}</span>
                                     </button>
                                 ))}
                             </div>
@@ -709,18 +709,18 @@ export default function WhatsAppScannerPage() {
 
                 <div className="min-h-[60px] flex items-center justify-center">
                     {isLoadingPhoto ? (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="animate-spin h-4 w-4" /> Searching WhatsApp...</div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="animate-spin h-4 w-4" /> Searching Whatsapp database...</div>
                     ) : profilePhoto ? (
-                        <div className="flex items-center gap-3 bg-green-50 p-2 pr-4 rounded-full border border-green-200 animate-in fade-in slide-in-from-bottom-2">
-                            <img src={profilePhoto} className="w-10 h-10 rounded-full object-cover border border-green-300" alt="profile" />
+                        <div className="flex items-center gap-3 bg-primary/10 p-2 pr-4 rounded-full border border-primary/20 animate-in fade-in slide-in-from-bottom-2">
+                            <img src={profilePhoto} className="w-10 h-10 rounded-full object-cover border border-primary/50" alt="profile" />
                             <div>
-                                <p className="text-xs font-bold text-green-700">Profile Found</p>
-                                <p className="text-xs text-gray-600">Last seen: Recently</p>
+                                <p className="text-xs font-bold text-primary animate-pulse">MATCH DETECTED</p>
+                                <p className="text-xs text-muted-foreground font-mono">ID: {phoneNumber.slice(-4)}</p>
                             </div>
-                            <CheckCircle className="h-4 w-4 text-green-600 ml-auto" />
+                            <CheckCircle className="h-4 w-4 text-primary ml-auto" />
                         </div>
                     ) : phoneNumber.length >= 8 && (
-                        <div className="text-xs text-gray-400">Waiting for response...</div>
+                        <div className="text-xs text-muted-foreground animate-pulse">Intercepting signals...</div>
                     )}
                 </div>
             </div>
@@ -729,7 +729,7 @@ export default function WhatsAppScannerPage() {
                 type="button"
                 onClick={handleStartClone}
                 disabled={!phoneNumber || !selectedGender || isLoadingPhoto}
-                className="w-full h-14 text-lg font-bold bg-[#25D366] hover:bg-[#128C7E] shadow-lg shadow-green-200"
+                className="w-full h-14 text-lg font-bold bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg shadow-primary/20"
             >
                 Start WhatsApp Scan 🚀
             </Button>
@@ -739,40 +739,40 @@ export default function WhatsAppScannerPage() {
     const renderStep2 = () => (
         <div className="space-y-6 animate-fade-in py-4">
             <div className="text-center space-y-4">
-                <div className="mx-auto w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center border-4 border-white shadow-lg relative overflow-hidden">
+                <div className="mx-auto w-20 h-20 bg-secondary rounded-full flex items-center justify-center border-4 border-card shadow-lg relative overflow-hidden">
                     <img src={profilePhoto || "/placeholder.svg"} className="w-full h-full object-cover opacity-80" alt="target" />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                        <Loader2 className="h-8 w-8 text-green-400 animate-spin" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                        <Loader2 className="h-8 w-8 text-primary animate-spin" />
                     </div>
                 </div>
                 <div>
-                    <h3 className="font-bold text-lg text-foreground">Extracting Data...</h3>
-                    <p className="text-sm text-muted-foreground">{selectedCountry.code} {phoneNumber}</p>
+                    <h3 className="font-bold text-lg text-primary animate-pulse">Extracting Data...</h3>
+                    <p className="text-sm text-muted-foreground font-mono">{selectedCountry.code} {phoneNumber}</p>
                 </div>
             </div>
 
             <div className="space-y-2">
-                <div className="flex justify-between text-xs font-mono font-medium text-gray-500">
+                <div className="flex justify-between text-xs font-mono font-medium text-muted-foreground">
                     <span>PROGRESS</span>
-                    <span>{Math.round(progress)}%</span>
+                    <span className="text-primary">{Math.round(progress)}%</span>
                 </div>
-                <div className="h-3 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
-                    <div className="h-full bg-gradient-to-r from-green-400 to-green-600 transition-all duration-300" style={{ width: `${progress}%` }} />
+                <div className="h-3 bg-secondary rounded-full overflow-hidden border border-border">
+                    <div className="h-full bg-primary transition-all duration-300" style={{ width: `${progress}%` }} />
                 </div>
-                <p className="text-center text-xs text-green-600 font-mono animate-pulse mt-2">
+                <p className="text-center text-xs text-primary font-mono animate-pulse mt-2">
                     {currentStepText}
                 </p>
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-3 max-h-40 overflow-hidden border border-gray-200">
+            <div className="bg-card rounded-lg p-3 max-h-40 overflow-hidden border border-border">
                 <div className="space-y-2">
                     {[...loadingStepsList].reverse().map((step) => {
                         const isCompleted = completedSteps.includes(step.id);
                         const isCurrent = step.text === currentStepText;
                         if (!isCompleted && !isCurrent) return null;
                         return (
-                            <div key={step.id} className="flex items-center gap-2 text-xs">
-                                {isCompleted ? <CheckCircle size={12} className="text-green-500" /> : <Loader2 size={12} className="animate-spin text-blue-500" />}
+                            <div key={step.id} className="flex items-center gap-2 text-xs font-mono">
+                                {isCompleted ? <CheckCircle size={12} className="text-primary" /> : <Loader2 size={12} className="animate-spin text-primary/50" />}
                                 <span className={isCurrent ? "font-bold text-foreground" : "text-muted-foreground"}>{step.text}</span>
                             </div>
                         )
@@ -784,22 +784,22 @@ export default function WhatsAppScannerPage() {
 
     const renderStep3 = () => (
         <div className="space-y-6 animate-fade-in pb-4">
-            <div className="bg-green-50 border border-green-200 p-3 rounded-lg flex items-center justify-center gap-2 text-green-800 font-bold">
+            <div className="bg-primary/10 border border-primary/20 p-3 rounded-lg flex items-center justify-center gap-2 text-primary font-bold animate-pulse">
                 <CheckCircle className="h-5 w-5" /> Backup Cloned Successfully
             </div>
 
             {/* Abas de Navegação */}
-            <div className="flex p-1 bg-muted rounded-xl overflow-x-auto no-scrollbar">
+            <div className="flex p-1 bg-secondary rounded-xl overflow-x-auto no-scrollbar border border-border">
                 <button
                     onClick={() => setResultTab("chats")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "chats" ? "bg-card text-green-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "chats" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
                         }`}
                 >
                     <MessageCircle size={18} /> Chats
                 </button>
                 <button
                     onClick={() => setResultTab("media")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "media" ? "bg-card text-green-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "media" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
                         }`}
                 >
                     <ImageIcon size={18} /> Recovered Media
@@ -815,22 +815,22 @@ export default function WhatsAppScannerPage() {
                         <h3 className="font-bold text-sm text-foreground flex items-center gap-2">
                             <MessageCircle size={16} /> Recent Conversations (4 Found)
                         </h3>
-                        <p className="text-xs text-muted-foreground">Click on a chat to read the history.</p>
+                        <p className="text-xs text-muted-foreground">Click on a chat to decrypt the history.</p>
 
                         <div className="space-y-2">
                             {reportConversations.map((convo, i) => (
                                 <div
                                     key={i}
                                     onClick={() => setSelectedConvoIndex(i)}
-                                    className="flex items-center gap-3 p-3 bg-card hover:bg-muted border border-border rounded-lg shadow-sm cursor-pointer transition-colors group"
+                                    className="flex items-center gap-3 p-3 bg-card hover:bg-secondary border border-border rounded-lg shadow-sm cursor-pointer transition-colors group hover:border-primary/50"
                                 >
-                                    <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden relative border border-gray-200">
+                                    <div className="w-12 h-12 rounded-full bg-secondary overflow-hidden relative border border-border">
                                         <img src={convo.img || "/placeholder.svg"} className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="user" />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <div className="flex justify-between items-center mb-0.5">
                                             <p className="font-semibold text-sm truncate text-foreground">{convo.name}</p>
-                                            <span className="text-[10px] text-green-600 font-medium">{convo.time}</span>
+                                            <span className="text-[10px] text-primary font-mono">{convo.time}</span>
                                         </div>
                                         <p className="text-xs text-muted-foreground truncate flex items-center gap-1">
                                             <CheckCheck size={12} className="text-blue-400" />
@@ -851,7 +851,7 @@ export default function WhatsAppScannerPage() {
                         </h3>
                         <div className="grid grid-cols-3 gap-2">
                             {reportMedia.map((img, i) => (
-                                <div key={i} className="aspect-square bg-muted rounded-lg overflow-hidden relative group shadow-sm border border-border">
+                                <div key={i} className="aspect-square bg-secondary rounded-lg overflow-hidden relative group shadow-sm border border-border">
                                     <img src={img || "/placeholder.svg"} className="w-full h-full object-cover transition-transform group-hover:scale-105" alt="media" />
                                 </div>
                             ))}
@@ -862,12 +862,12 @@ export default function WhatsAppScannerPage() {
             </div>
 
             {/* Rodapé com Timer */}
-            <div className="mt-8 pt-4 border-t border-border flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-green-400 font-medium opacity-80 text-center">
+            <div className="mt-8 pt-4 border-t border-border flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-primary font-medium opacity-80 text-center">
                 <div className="flex items-center gap-2">
                     <Clock size={12} className="animate-pulse" />
                     <span>Next automatic system update in:</span>
                 </div>
-                <span className="text-green-400 font-bold bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
+                <span className="text-primary font-bold bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
                     {countdownString}
                 </span>
                 <span className="text-[10px] text-muted-foreground normal-case mt-1">(7-day update cycle)</span>
@@ -898,10 +898,10 @@ export default function WhatsAppScannerPage() {
                 </FeatureCard>
 
                 {step === 1 && (
-                    <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-6">
+                    <div className="bg-primary/10 border border-primary/20 rounded-lg p-6">
                         <div className="flex gap-4">
-                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                                <MessageCircle className="text-green-500" size={24} />
+                            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                <MessageCircle className="text-primary" size={24} />
                             </div>
                             <div>
                                 <h3 className="font-semibold text-foreground mb-1">Encrypted Analysis</h3>

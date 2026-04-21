@@ -429,19 +429,19 @@ function DatingAppScannerContent() {
   // --- STEP 1: INPUT ---
   const renderStep1 = () => (
     <div className="space-y-6 animate-fade-in">
-      <div className="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg flex gap-3 text-sm">
+      <div className="bg-yellow-900/20 border border-yellow-700/50 p-3 rounded-lg flex gap-3 text-sm">
         <AlertTriangle className="text-yellow-500 flex-shrink-0" size={20} />
-        <p className="text-yellow-200/80">
+        <p className="text-yellow-400">
           <span className="font-bold">Privacy Warning:</span> Ensure you are authorized to search for this person. Results may contain sensitive dating activity.
         </p>
       </div>
 
       {/* Image Upload */}
-      <div className="bg-card rounded-xl border-2 border-dashed border-blue-400/50 p-6 text-center hover:bg-muted transition-colors">
+      <div className="bg-card rounded-xl border-2 border-dashed border-border p-6 text-center hover:bg-secondary/20 transition-colors">
         <h2 className="font-bold text-foreground mb-4">1. Upload Target's Photo</h2>
         <label
           htmlFor="photo-upload"
-          className="w-40 h-40 mx-auto flex items-center justify-center bg-muted border-2 border-blue-400/30 rounded-full cursor-pointer overflow-hidden relative shadow-sm hover:scale-105 transition-transform"
+          className="w-40 h-40 mx-auto flex items-center justify-center bg-secondary border-2 border-border rounded-full cursor-pointer overflow-hidden relative shadow-sm hover:scale-105 hover:border-primary/50 transition-all"
         >
           <input
             id="photo-upload"
@@ -457,13 +457,13 @@ function DatingAppScannerContent() {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="flex flex-col items-center text-blue-400">
+            <div className="flex flex-col items-center text-primary/70">
               <Camera size={32} />
               <span className="text-xs font-bold mt-1">Tap to Upload</span>
             </div>
           )}
         </label>
-        <p className="text-xs text-muted-foreground mt-4">AI Face Recognition Technology</p>
+        <p className="text-xs text-muted-foreground mt-4 font-mono">ENCRYPTED AI IMAGE ANALYSIS</p>
       </div>
 
       {/* Gender Select */}
@@ -475,8 +475,8 @@ function DatingAppScannerContent() {
               key={gender}
               onClick={() => setSelectedGender(gender)}
               className={`p-3 border rounded-xl transition-all duration-200 flex flex-col items-center justify-center gap-2 ${selectedGender === gender
-                ? "border-pink-500 bg-pink-500/10 ring-1 ring-pink-500"
-                : "border-border hover:border-primary/50 bg-card"
+                ? "border-primary bg-primary/10 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+                : "border-border bg-card hover:border-primary/50"
                 }`}
             >
               <span className="text-3xl">{genderEmojis[gender]}</span>
@@ -489,7 +489,7 @@ function DatingAppScannerContent() {
       <button
         onClick={handleStartInvestigation}
         disabled={!imagePreview || !selectedGender}
-        className="w-full h-14 bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
+        className="w-full h-14 bg-primary text-primary-foreground font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
       >
         <Search size={20} />
         SCAN DATING APPS
@@ -499,10 +499,10 @@ function DatingAppScannerContent() {
 
   // --- STEP 2: LOADING ---
   const renderStep2 = () => (
-    <div className="text-center py-12 space-y-6 animate-fade-in">
+    <div className="text-center py-12 space-y-6 animate-fade-in relative">
       <div className="relative w-32 h-32 mx-auto">
-        <div className="absolute inset-0 rounded-full border-4 border-gray-100"></div>
-        <div className="absolute inset-0 rounded-full border-4 border-t-pink-500 animate-spin"></div>
+        <div className="absolute inset-0 rounded-full border-4 border-card"></div>
+        <div className="absolute inset-0 rounded-full border-4 border-t-primary animate-spin"></div>
         {imagePreview && (
           <div className="absolute inset-2 rounded-full overflow-hidden">
             <img
@@ -514,17 +514,17 @@ function DatingAppScannerContent() {
         )}
       </div>
       <div>
-        <h2 className="text-xl font-bold text-foreground">Scanning Database...</h2>
-        <p className="text-sm text-muted-foreground mt-2 mb-4">Checking Tinder, Bumble, Hinge, and 14 others...</p>
+        <h2 className="text-xl font-bold text-primary animate-pulse">Scanning Database...</h2>
+        <p className="text-sm text-muted-foreground mt-2 mb-4">Bypassing Tinder, Bumble, Hinge, and 14 others...</p>
 
         {/* Progress Bar */}
-        <div className="w-full max-w-xs mx-auto bg-muted rounded-full h-2.5 overflow-hidden">
+        <div className="w-full max-w-xs mx-auto bg-secondary rounded-full h-2.5 overflow-hidden border border-border">
           <div
-            className="bg-gradient-to-r from-red-500 to-pink-600 h-2.5 rounded-full transition-all duration-300 ease-out"
+            className="bg-primary h-2.5 rounded-full transition-all duration-300 ease-out"
             style={{ width: `${loadingProgress}%` }}
           ></div>
         </div>
-        <p className="text-xs text-muted-foreground mt-2 font-mono">{Math.floor(loadingProgress)}% COMPLETED</p>
+        <p className="text-xs text-primary mt-2 font-mono">{Math.floor(loadingProgress)}% COMPLETED</p>
       </div>
     </div>
   )
@@ -533,12 +533,12 @@ function DatingAppScannerContent() {
   const renderStep3 = () => (
     <div className="space-y-4 animate-fade-in pb-2">
       {/* Banner de Sucesso */}
-      <div className="bg-red-500 text-white p-4 rounded-lg shadow-md flex items-center gap-3">
-        <Zap className="fill-yellow-400 text-yellow-400" size={24} />
+      <div className="bg-primary/10 border border-primary/20 text-primary p-4 rounded-lg shadow-md flex items-center gap-3">
+        <Zap className="fill-primary" size={24} />
         <div>
-          <h1 className="font-bold text-sm">PROFILE FOUND ON 3 APPS</h1>
-          <p className="text-xs text-red-100 opacity-90">
-            Status: <span className="font-bold bg-white/20 px-1 rounded">Online Recently</span>
+          <h1 className="font-bold text-sm animate-pulse">PROFILE FOUND ON 3 APPS</h1>
+          <p className="text-xs text-muted-foreground opacity-90 font-mono mt-1">
+            Status: <span className="font-bold bg-primary/20 text-primary px-1 border border-primary/20 rounded">Online Recently</span>
           </p>
         </div>
       </div>
@@ -546,15 +546,15 @@ function DatingAppScannerContent() {
       {/* Stats Grid */}
       <div className="grid grid-cols-4 gap-2">
         <div className="bg-card p-2 py-3 rounded-lg border border-border text-center shadow-sm">
-          <p className="text-xl font-bold text-red-400">{matches.length}</p>
+          <p className="text-xl font-bold text-foreground">{matches.length}</p>
           <p className="text-[10px] text-muted-foreground font-bold uppercase">Matches</p>
         </div>
         <div className="bg-card p-2 py-3 rounded-lg border border-border text-center shadow-sm">
-          <p className="text-xl font-bold text-orange-400">30+</p>
+          <p className="text-xl font-bold text-foreground">30+</p>
           <p className="text-[10px] text-muted-foreground font-bold uppercase">Likes</p>
         </div>
         <div className="bg-card p-2 py-3 rounded-lg border border-border text-center shadow-sm">
-          <p className="text-xl font-bold text-purple-400">3</p>
+          <p className="text-xl font-bold text-foreground">3</p>
           <p className="text-[10px] text-muted-foreground font-bold uppercase">Chats</p>
         </div>
         <div className="bg-card p-2 py-3 rounded-lg border border-border text-center shadow-sm">
@@ -564,17 +564,17 @@ function DatingAppScannerContent() {
       </div>
 
       {/* --- TABS --- */}
-      <div className="flex p-1 bg-muted rounded-xl overflow-x-auto no-scrollbar mt-4">
+      <div className="flex p-1 bg-secondary border border-border rounded-xl overflow-x-auto no-scrollbar mt-4">
         <button
           onClick={() => setResultTab("matches")}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "matches" ? "bg-card text-pink-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "matches" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
             }`}
         >
           <Flame size={18} /> Recent Matches
         </button>
         <button
           onClick={() => setResultTab("chats")}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "chats" ? "bg-card text-blue-400 shadow-sm" : "text-muted-foreground hover:text-foreground"
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${resultTab === "chats" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
             }`}
         >
           <MessageCircle size={18} /> Chats
@@ -588,16 +588,16 @@ function DatingAppScannerContent() {
         {resultTab === "matches" && (
           <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
             <h3 className="font-bold text-lg flex items-center gap-2 text-foreground">
-              <Flame className="text-pink-500 fill-pink-500 w-5 h-5" /> Active Matches
+              <Flame className="text-primary fill-primary/20 w-5 h-5" /> Active Matches
             </h3>
             <div className="grid grid-cols-1 gap-3">
               {matches.map((match, i) => (
-                <div key={i} className="flex gap-4 p-3 bg-card border border-border rounded-xl shadow-sm hover:border-pink-400 transition-colors">
+                <div key={i} className="flex gap-4 p-3 bg-card border border-border rounded-xl shadow-sm hover:border-primary/50 transition-colors">
                   <img src={match.avatar} alt={match.name} className="w-16 h-16 rounded-lg object-cover" />
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start">
                       <h4 className="font-bold text-foreground truncate">{match.name}, {match.age}</h4>
-                      {match.verified && <CheckCircle size={14} className="text-blue-500 mt-1" />}
+                      {match.verified && <CheckCircle size={14} className="text-primary mt-1" />}
                     </div>
                     <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
                       <MapPin size={12} /> {match.distance} away
@@ -614,7 +614,7 @@ function DatingAppScannerContent() {
         {resultTab === "chats" && (
           <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
             <h3 className="font-bold text-lg flex items-center gap-2 text-foreground">
-              <MessageCircle className="text-blue-500 w-5 h-5" /> Intercepted Conversations
+              <MessageCircle className="text-primary w-5 h-5" /> Intercepted Conversations
             </h3>
             <p className="text-sm text-muted-foreground mb-2">Click on a chat to view history.</p>
 
@@ -623,23 +623,23 @@ function DatingAppScannerContent() {
                 <div
                   key={i}
                   onClick={() => setSelectedChat(match)}
-                  className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group"
+                  className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-primary/10 hover:border-primary/50 transition-all cursor-pointer group"
                 >
                   <div className="relative">
-                    <img src={match.avatar} alt={match.name} className="w-12 h-12 rounded-full object-cover border border-gray-200" />
-                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+                    <img src={match.avatar} alt={match.name} className="w-12 h-12 rounded-full object-cover border border-border" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-primary border-2 border-card rounded-full"></div>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-center mb-1">
                       <p className="font-bold text-foreground">{match.name}</p>
-                      <span className="text-[10px] text-muted-foreground">Just now</span>
+                      <span className="text-[10px] text-muted-foreground font-mono">Just now</span>
                     </div>
                     <p className="text-sm text-muted-foreground truncate flex items-center">
-                      <span className="w-2 h-2 rounded-full bg-blue-500 mr-2 flex-shrink-0"></span>
-                      Click to read messages...
+                      <span className="w-2 h-2 rounded-full bg-primary mr-2 flex-shrink-0 animate-pulse"></span>
+                      Click to decrypt messages...
                     </p>
                   </div>
-                  <MoreVertical size={16} className="text-gray-400" />
+                  <MoreVertical size={16} className="text-muted-foreground" />
                 </div>
               ))}
             </div>
@@ -648,12 +648,12 @@ function DatingAppScannerContent() {
       </div>
 
       {/* RODAPÉ COM TIMER DINÂMICO */}
-      <div className="mt-8 pt-4 border-t border-border flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-green-400 font-medium opacity-80 text-center">
+      <div className="mt-8 pt-4 border-t border-border flex flex-col items-center justify-center gap-1 text-[11px] uppercase tracking-wide text-primary font-medium opacity-80 text-center">
         <div className="flex items-center gap-2">
           <Clock size={12} className="animate-pulse" />
           <span>Next automatic system update in:</span>
         </div>
-        <span className="text-green-400 font-bold bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
+        <span className="text-primary font-bold bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
           {countdownString}
         </span>
         <span className="text-[10px] text-muted-foreground normal-case mt-1">(7-day update cycle)</span>
@@ -680,11 +680,9 @@ function DatingAppScannerContent() {
 
         {/* Info Card - Apenas no passo 1 */}
         {step === 1 && (
-          <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-6">
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 text-xl">
-                ❤️
-              </div>
+              <div className="text-primary flex-shrink-0 text-2xl animate-pulse">❤️</div>
               <div>
                 <h3 className="font-semibold text-foreground mb-1">Deep Scan Technology</h3>
                 <p className="text-sm text-muted-foreground">
