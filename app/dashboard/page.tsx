@@ -1,13 +1,13 @@
 // Dashboard Page is a Server component
 import DashboardLayout from "@/components/dashboard-layout"
-import { PlayCircle, CheckSquare, Settings, Star, Check } from "lucide-react"
+import { MessageCircle, Camera, Heart, PlayCircle, Check } from "lucide-react"
 import Link from "next/link"
 import { createClient } from "@/utils/supabase/server"
 
 export default async function DashboardPage() {
   const supabase = await createClient();
   
-  // Realiza query às tabelas traduzidas ('lessons' e 'courses')
+  // Performs query on tables ('lessons' and 'courses')
   const { count: lessonsCount } = await supabase
     .from('lessons')
     .select('*', { count: 'exact', head: true });
@@ -21,44 +21,44 @@ export default async function DashboardPage() {
 
   const modules = [
     {
-      id: "intro",
-      title: "Start Here",
-      description: "Introduction to TiSpy",
-      subText: "2 lessons",
-      icon: PlayCircle,
+      id: "whatsapp",
+      title: "WhatsApp Scanner",
+      description: "Access WhatsApp scanner",
+      subText: "Active",
+      icon: MessageCircle,
       color: "bg-blue-600",
-      buttonText: "Start Lessons →",
-      path: "/dashboard/intro"
+      buttonText: "Start Scanner →",
+      path: "/dashboard/whatsapp"
     },
     {
-      id: "tutorial",
-      title: "Installation Tutorial",
-      description: "Practical guide to start",
-      subText: "3 lessons",
-      icon: CheckSquare,
+      id: "instagram",
+      title: "Instagram Scanner",
+      description: "Access Instagram scanner",
+      subText: "Active",
+      icon: Camera,
       color: "bg-purple-600",
-      buttonText: "Start Lessons →",
-      path: "/dashboard/tutorial"
+      buttonText: "Start Scanner →",
+      path: "/dashboard/instagram"
     },
     {
-      id: "advanced",
-      title: "Advanced Panel",
-      description: "Master the features",
-      subText: "6 lessons",
-      icon: Settings,
+      id: "dating",
+      title: "Dating Scanner",
+      description: "Access Dating scanner",
+      subText: "Active",
+      icon: Heart,
       color: "bg-orange-500",
-      buttonText: "Start Lessons →",
-      path: "/dashboard/scanners"
+      buttonText: "Start Scanner →",
+      path: "/dashboard/dating"
     },
     {
       id: "bonus",
-      title: "Exclusive Bonuses",
-      description: "VIP tools and content",
-      subText: "Unlocked",
-      icon: Star,
+      title: "Advanced Spy",
+      description: "Introduction to TiSpy",
+      subText: "2 lessons",
+      icon: PlayCircle,
       color: "bg-green-600",
       buttonText: "Start Lessons →",
-      path: "/dashboard/bonus"
+      path: "/dashboard/intro"
     }
   ]
 
@@ -74,18 +74,18 @@ export default async function DashboardPage() {
           </p>
         </div>
 
-        {/* Grelha de Módulos (Cards) */}
+        {/* Modules Grid (Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {modules.map((mod) => {
             const Icon = mod.icon
             return (
               <div key={mod.id} className="bg-card border border-border rounded-xl overflow-hidden flex flex-col shadow-sm">
-                {/* Header colorido do Card */}
+                {/* Colored Card Header */}
                 <div className={`${mod.color} h-32 flex items-center justify-center`}>
                   <Icon className="w-12 h-12 text-white" strokeWidth={2} />
                 </div>
                 
-                {/* Conteúdo do Card */}
+                {/* Card Content */}
                 <div className="p-6 flex-1 flex flex-col">
                   <h2 className="text-xl font-bold text-white mb-2">{mod.title}</h2>
                   <p className="text-sm text-zinc-300 mb-4">{mod.description}</p>
