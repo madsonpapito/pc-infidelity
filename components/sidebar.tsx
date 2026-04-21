@@ -94,9 +94,9 @@ export default function Sidebar({ open, onToggle, activeTab }: SidebarProps) {
           </div>
         </div>
 
-        {/* Category: Espionagem Avançada */}
+        {/* Category: Advanced Spy */}
         <div>
-          <h3 className="px-3 text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Espionagem Avançada</h3>
+          <h3 className="px-3 text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Advanced Spy</h3>
           <div className="space-y-1">
             {advancedItems.map((item) => {
               const Icon = item.icon
